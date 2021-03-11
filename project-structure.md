@@ -42,10 +42,10 @@
 * gameFinished(Field) -> bool
 
 
-### class StandartRules implements Rules
+#### class StandartRules implements Rules
 Классические правила игры "Жизнь".
 
-### class RulesFromFile implements Rules
+#### class RulesFromFile implements Rules
 В конструкторе принимает путь к файлу с правилами автомата.
 
 ---
