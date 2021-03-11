@@ -9,11 +9,48 @@
 3. `set_rules “input.txt”` Изменить правила.
 4. `set_params --speed [1] --size [“10,10”] --iters_count [100]` Зафиксировать значения параметров для всех будущих итераций.
 5. `reset_params` Восстанавливает дефолтные значения параметров запуска.
-6. `params` Вывести на экран текущие значения параметров.
-7. `dot 2 5` Добавить живую клетку с данными координатами.
-8. `figure --type [“type”] 6 12` Добавить фигуру.
+6. `get_params` Вывести на экран текущие значения параметров.
+7. `add_dot 2 5` Добавить живую клетку с данными координатами.
+8. `remove_dot 2 5` Удалить живую клетку с данными координатами.
+9. `add_figure --type [“type”] 6 12` Добавить фигуру.
+10. `show_start` Показать стартовое состояние автомата.
 
-#### class
+#### interface Command
+Интерфейс команды.
+
+Публичный метод:
+* Run
+
+#### class RunCommand implements Command
+Запускает симуляцию.
+
+#### class InitializeCommand implements Command
+Инициализирует изначальное состояние автомата координатами из файла.
+
+#### class SetRulesCommand implements Command
+Меняет правила на данные в файле.
+
+#### class SetParamsCommand implements Command
+Пермарнентно меняет значение параметров запуска.
+
+#### class ResetParamsCommand implements Command
+Возвращает дефолтные значения параметров запуска.
+
+#### class GetParamsCommand implements Command
+Выводит на экран значения параметров.
+
+#### class AddDotCommand implements Command
+Добавляет живую клетку.
+
+#### class RemoveDotCommand implements Command
+Удалить живую клетку.
+
+#### class AddFigureCommand implements Command
+Добавить фигуру с координатами верхней левой клетки.
+
+#### class ShowStartCommand implements Command
+Вывести на экран стартовую конфигурацию живых клеток.
+
 
 ### interface Settings
 Хранит начальную конфигурацию живых клеток, размеры поля,  время между итерациями автомата, цвет клеток.
