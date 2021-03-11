@@ -115,6 +115,38 @@
 
 ---
 
+### interface Reader
+Интерфейс чтения входных данных.
+
+Публичные методы:
+* readFieldSize
+* readNCells
+* readCells(nCells) -> List<Cell>
+* readCell -> Cell 
+
+
+#### class ConsoleReader implements Reader
+
+
+#### class FileReader implements Reader
+В конструкторе принимает путь к файлу с начальными координатами всех живых клеток.
+
+---
+
+### interface Display
+Отображение состояния игры "Жизнь" в консоли / запись состояний в файл.
+
+Публичные методы:
+* display(field)
+
+#### class ConsoleDisplay implements Display
+Отображение состояний в консоли.
+
+#### class FileDisplay implements Display
+В конструкторе принимает путь к snapshot_file файлу.
+
+---
+
 ### class Runner
 Принимает Rules, Field, Display.
 ```java
