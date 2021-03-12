@@ -53,6 +53,9 @@
 #### class ResetCommand implements Command
 Возвращает дефолтные значения симуляции. Копирует `default_rules.txt` в `rules.txt`, копирует `default_params.txt` в `params.txt`, очищает файл `initial_configuration.txt`.
 
+#### class showBoard implements Command
+Получает на вход доску и выводит ее в консоль.
+
 ---
 
 ### interface Settings
