@@ -74,24 +74,17 @@
 
 ---
 
-### class Cell
-Хранит координаты и состояние клетки.
-
-Публичные методы:
-* getState
-* setState
-
----
 
 ### class Field
-Хранит игровое поле, состоящее из объектов Cell.
+Хранит игровое поле: состояние каждой клетки. Предположительно строки будут храниться в BitSet.
 
 Публичные методы:
 * getCell
+* setCell
 
 ---
 
-### interface Rules
+### interface CellularAutomaton
 Определяет правила, по которым клетка на следующей итерации оживает или умирает.
 
 
@@ -100,10 +93,10 @@
 * gameFinished(Field) -> bool
 
 
-#### class StandartRules implements Rules
+#### class StandartCellularAutomaton implements CellularAutomaton
 Классические правила игры "Жизнь".
 
-#### class RulesFromFile implements Rules
+#### class CellularAutomatonFromFile implements CellularAutomaton
 В конструкторе принимает путь к файлу с правилами автомата.
 
 ---
@@ -113,9 +106,7 @@
 
 Публичные методы:
 * readFieldSize
-* readNCells
-* readCells(nCells) -> List<Cell>
-* readCell -> Cell 
+* readCells -> Field
 
 
 #### class ConsoleReader implements Reader
@@ -141,10 +132,10 @@
 ---
 
 ### class Runner
-Принимает Rules, Field, Display.
+Принимает CellularAutomaton, Field, Display.
 ```java
 while(!rules.gameFinished(field)) {
-  rules.updateFieldConfiguration(field)
+  automation.updateFieldConfiguration(field)
   display.display(field)
 }
 ```
