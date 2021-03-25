@@ -104,11 +104,6 @@
 ### interface Reader
 Интерфейс чтения входных данных.
 
-Публичные методы:
-* readFieldSize
-* readCells -> Field
-
-
 #### class ConsoleReader implements Reader
 
 
