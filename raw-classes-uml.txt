@@ -1,0 +1,35 @@
+@startuml
+interface Settings
+Settings --> StandartSettings
+Settings --> SettingsFromFile
+
+class Field
+
+interface CellularAutomation
+CellularAutomation --> StandartCellularAutomation
+CellularAutomation --> CellularAutomationFromFile
+
+interface Reader
+Reader --> ConsoleReader
+Reader --> FileReader
+
+interface Display
+Display --> ConsoleDisplay
+Display --> FileDisplay
+
+class Runner
+@enduml
+
+@startuml
+interface Command
+Command --> RunCommand 
+Command --> InitializeCommand 
+Command --> SetRulesCommand
+Command --> GetParamsCommand 
+Command --> AddDotCommand 
+Command --> RemoveDotCommand
+Command --> AddFigureCommand
+Command --> ShowStartCommand
+Command --> ResetCommand
+Command --> showBoard
+@enduml
