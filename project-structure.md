@@ -54,8 +54,11 @@
 #### class ResetCommand implements Command
 Возвращает дефолтные значения симуляции. Копирует `default_rules.txt` в `rules.txt`, копирует `default_params.txt` в `params.txt`, очищает файл `initial_configuration.txt`.
 
-#### class showBoard implements Command
+#### class ShowBoard implements Command
 Получает на вход доску и выводит ее в консоль.
+
+#### class TerminateGame implements Command
+Останавливает игру.
 
 ---
 
@@ -130,7 +133,7 @@
 ### class Runner
 Принимает CellularAutomaton, Field, Display.
 ```java
-while(!rules.gameFinished(field)) {
+while(!automation.gameFinished(field) && !automation.isTerminated()) {
   automation.updateFieldConfiguration(field)
   display.display(field)
 }
