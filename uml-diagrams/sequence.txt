@@ -1,0 +1,22 @@
+@startuml
+
+User -> CLI: run with file config
+CLI -> Reader: read config
+Reader --> User: request data
+User -> Reader: return data
+Reader --> CLI: return automation
+CLI -> Runner: run game
+Runner -> Automation: first iter
+Automation --> Runner: return first iter
+Runner -> Display: show first iteration
+Display --> Runner
+...
+
+Runner -> Automation: last iter
+Automation --> Runner: return last iter
+Display --> Runner
+Runner -> Display: show last iteration
+User -> CLI: stop game
+CLI -> Runner: terminate automation
+
+@enduml
