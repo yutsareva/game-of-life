@@ -1,35 +1,68 @@
 @startuml
 interface Settings
-Settings --> StandartSettings
-Settings --> SettingsFromFile
+class StandartSettings
+class SettingsFromFile
+
+interface CellularAutomation
+class StandartCellularAutomation
+class CellularAutomationFromFile
+
+interface Reader
+class ConsoleReader
+class FileReader
+
+interface Display
+class ConsoleDisplay
+class FileDisplay
+
+interface Command
+class RunCommand
+class InitializeCommand
+class SetRulesCommand
+class GetParamsCommand
+class AddDotCommand
+class RemoveDotCommand
+class AddFigureCommand
+class ShowStartCommand
+class ResetCommand
+class ShowBoard
+
+class CLI
+
+class Runner
 
 class Field
 
-interface CellularAutomation
-CellularAutomation --> StandartCellularAutomation
-CellularAutomation --> CellularAutomationFromFile
 
-interface Reader
-Reader --> ConsoleReader
-Reader --> FileReader
+Settings <|- StandartSettings
+Settings <|- SettingsFromFile
 
-interface Display
-Display --> ConsoleDisplay
-Display --> FileDisplay
+CellularAutomation <|- StandartCellularAutomation
+CellularAutomation <|- CellularAutomationFromFile
 
-class Runner
-@enduml
+Reader <|- ConsoleReader
+Reader <|- FileReader
 
-@startuml
-interface Command
-Command --> RunCommand 
-Command --> InitializeCommand 
-Command --> SetRulesCommand
-Command --> GetParamsCommand 
-Command --> AddDotCommand 
-Command --> RemoveDotCommand
-Command --> AddFigureCommand
-Command --> ShowStartCommand
-Command --> ResetCommand
-Command --> showBoard
+Display <|- ConsoleDisplay
+Display <|- FileDisplay
+
+Command <|- RunCommand 
+Command <|- InitializeCommand 
+Command <|- SetRulesCommand
+Command <|- GetParamsCommand 
+Command <|- AddDotCommand 
+Command <|- RemoveDotCommand
+Command <|- AddFigureCommand
+Command <|- ShowStartCommand
+Command <|- ResetCommand
+Command <|- ShowBoard
+
+CLI -> Command
+CLI -> Reader
+CLI -> Runner
+Runner *-- CellularAutomation
+CellularAutomation *-- Field
+Runner *-- Settings
+Runner -> Display
+
 @enduml
