@@ -15,6 +15,7 @@
 9. `show_start` Показать стартовое состояние автомата.
 10. `reset` Восстанавливает дефолтные значения параметров запуска, правил, очищает начальную конфигурацию.
 11. `show_board --file "input.txt"` Выводит на экран доску из файла.
+12. `stop` Останавливает симуляцию.
  
 ---
 
@@ -57,7 +58,7 @@
 #### class ShowBoard implements Command
 Получает на вход доску и выводит ее в консоль.
 
-#### class TerminateGame implements Command
+#### class StopCommand implements Command
 Останавливает игру.
 
 ---
