@@ -4,17 +4,18 @@
 Отправная точка взаимодействия пользователя с программой. Использует внешние библиотеки для распарсивания поступившей команды от пользователя и передачи управления соответствующим классам.
 
 Поддерживает комманды:
-1. `run --speed [1 (ms)] --size [“10,10”] --iters_count [100] --snapshot [true] --snapshot_step [10] --snapshot_file [“output.txt”] --color ["white"]` Запуск симуляции с текущими параметрами и входными данными.
-2. `initialize “input.txt”` Проинициализировать изначальное состояние поля координатами живых клеток из файла. Все предыдущие координаты клеток удаляются.
-3. `set_rules “input.txt”` Изменить правила.
-4. `set_params --speed [1] --size [“10,10”] --iters_count [100] --color ["white"]` Зафиксировать значения параметров для всех будущих итераций.
+1. `run --speed 1(ms) --size [10,10] --iters_count 100 --snapshot true --snapshot_step 10 --snapshot_file “output.txt” --color "white"` Запуск симуляции с текущими параметрами и входными данными.
+2. `initialize --file “input.txt”` Проинициализировать изначальное состояние поля координатами живых клеток из файла. Все предыдущие координаты клеток удаляются.
+3. `set_rules --file “input.txt”` Изменить правила.
+4. `set_params --speed 1 --size [10,10] --iters_count 100 --color "white"` Зафиксировать значения параметров для всех будущих итераций.
 5. `get_params` Вывести на экран текущие значения параметров.
-6. `add_dot 2 5` Добавить живую клетку с данными координатами.
-7. `remove_dot 2 5` Удалить живую клетку с данными координатами.
-8. `add_figure --type [“type”] 6 12` Добавить фигуру.
+6. `add_dot --place [2, 5]` Добавить живую клетку с данными координатами.
+7. `remove_dot --place [2, 5]` Удалить живую клетку с данными координатами.
+8. `add_figure --type “type” --place [6, 12]` Добавить фигуру.
 9. `show_start` Показать стартовое состояние автомата.
 10. `reset` Восстанавливает дефолтные значения параметров запуска, правил, очищает начальную конфигурацию.
-11. `show_board "input.txt"` Выводит на экран доску из файла.
+11. `show_board --file "input.txt"` Выводит на экран доску из файла.
+12. `stop` Останавливает симуляцию.
  
 ---
 
@@ -54,10 +55,10 @@
 #### class ResetCommand implements Command
 Возвращает дефолтные значения симуляции. Копирует `default_rules.txt` в `rules.txt`, копирует `default_params.txt` в `params.txt`, очищает файл `initial_configuration.txt`.
 
-#### class ShowBoard implements Command
+#### class ShowBoardCommand implements Command
 Получает на вход доску и выводит ее в консоль.
 
-#### class TerminateGame implements Command
+#### class StopCommand implements Command
 Останавливает игру.
 
 ---
