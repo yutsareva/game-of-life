@@ -1,5 +1,7 @@
 package ru.hse.java;
 
+import ru.hse.java.automation.Field;
+
 public class FileDisplay implements Display {
 
   @Override
