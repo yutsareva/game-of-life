@@ -1,4 +1,4 @@
-package ru.hse.java;
+package ru.hse.java.commands;
 
 public interface Command {
   void run();

@@ -1,8 +1,19 @@
 package ru.hse.java;
 
 import com.beust.jcommander.JCommander;
-import com.beust.jcommander.Parameters;
-import java.io.IOException;
+import ru.hse.java.commands.AddDotCommand;
+import ru.hse.java.commands.AddFigureCommand;
+import ru.hse.java.commands.GetParamsCommand;
+import ru.hse.java.commands.HelpCommand;
+import ru.hse.java.commands.InitializeCommand;
+import ru.hse.java.commands.RemoveDotCommand;
+import ru.hse.java.commands.ResetCommand;
+import ru.hse.java.commands.RunCommand;
+import ru.hse.java.commands.SetParamsCommand;
+import ru.hse.java.commands.SetRulesCommand;
+import ru.hse.java.commands.ShowBoardCommand;
+import ru.hse.java.commands.ShowStartCommand;
+import ru.hse.java.commands.StopCommand;
 
 public class CLI {
   public static void main(String ... args) {
@@ -18,6 +29,7 @@ public class CLI {
     ResetCommand resetCommand = new ResetCommand();
     ShowBoardCommand showBoardCommand = new ShowBoardCommand();
     StopCommand stopCommand = new StopCommand();
+    HelpCommand helpCommand = new HelpCommand();
 
     JCommander jc = JCommander.newBuilder()
         .addCommand(runCommand)
@@ -32,6 +44,7 @@ public class CLI {
         .addCommand(resetCommand)
         .addCommand(showBoardCommand)
         .addCommand(stopCommand)
+        .addCommand(helpCommand)
         .build();
     jc.parse(args);
     String parsedCmdStr = jc.getParsedCommand();
@@ -83,6 +96,10 @@ public class CLI {
 
         case "stop":
           stopCommand.run();
+          break;
+
+        case "help":
+          jc.usage();
           break;
 
         default:

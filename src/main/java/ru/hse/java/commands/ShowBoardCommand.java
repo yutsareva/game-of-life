@@ -1,21 +1,21 @@
-package ru.hse.java;
+package ru.hse.java.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
 @Parameters(
-    commandNames = { "set_rules" },
-    commandDescription = "Change rules."
+    commandNames = { "show_board" },
+    commandDescription = "Show given board."
 )
-public class SetRulesCommand implements Command {
+public class ShowBoardCommand implements Command {
   @Parameter(
       names = "--file",
       description = "Input file."
   )
   private String file;
-
+  
   @Override
   public void run() {
-    System.out.println("InitializeCommand");
+    System.out.println("ShowBoardCommand");
   }
 }

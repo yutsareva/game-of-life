@@ -1,13 +1,13 @@
-package ru.hse.java;
+package ru.hse.java.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
 @Parameters(
-    commandNames = { "initialize" },
-    commandDescription = "Initialize starting configuration of alive cells."
+    commandNames = { "set_rules" },
+    commandDescription = "Change rules."
 )
-public class InitializeCommand implements Command {
+public class SetRulesCommand implements Command {
   @Parameter(
       names = "--file",
       description = "Input file."

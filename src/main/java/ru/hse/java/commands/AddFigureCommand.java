@@ -1,4 +1,4 @@
-package ru.hse.java;
+package ru.hse.java.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
