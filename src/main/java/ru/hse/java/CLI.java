@@ -16,6 +16,12 @@ import ru.hse.java.commands.ShowStartCommand;
 import ru.hse.java.commands.StopCommand;
 
 public class CLI {
+  public static final String DEFAULT_PARAMETERS_FILE = "src/main/java/resources/default_params.txt";
+  public static final String CURRENT_PARAMETERS_FILE = "src/main/java/resources/params.txt";
+  public static final String DEFAULT_RULES_FILE = "src/main/java/resources/default_rules.txt";
+  public static final String CURRENT_RULES_FILE = "src/main/java/resources/rules.txt";
+  public static final String INITIAL_CONFIGURATION = "src/main/java/resources/initial_configuration.txt";
+
   public static void main(String ... args) {
     RunCommand runCommand = new RunCommand();
     InitializeCommand initializeCommandCmd = new InitializeCommand();
