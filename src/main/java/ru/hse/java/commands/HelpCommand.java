@@ -9,4 +9,7 @@ import com.beust.jcommander.Parameters;
 public class HelpCommand implements Command {
   @Override
   public void run() {}
+
+  @Override
+  public void check_flags() {}
 }

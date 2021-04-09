@@ -53,7 +53,25 @@ public class RunCommand implements Command {
   private double color;
 
   @Override
-  public void run() {
-    System.out.println("RunCommand");
+  public void run() { System.out.println("RunCommand"); }
+
+  @Override
+  public void check_flags() {
+    if (speed <= 0) {
+      System.out.println("'--speed' must be a positive.");
+      return;
+    }
+    if (size.size() != 2) {
+      System.out.println("'--size' must be an array of size 2.");
+      return;
+    }
+    if (size.get(0) <= 0 || size.get(1) <= 0) {
+      System.out.println("'--size' elements must be positive.");
+      return;
+    }
+    if (iters_count <= 0) {
+      System.out.println("'--iters_count' must be positive.");
+      return;
+    }
   }
 }

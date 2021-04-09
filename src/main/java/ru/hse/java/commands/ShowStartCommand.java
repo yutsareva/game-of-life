@@ -11,4 +11,9 @@ public class ShowStartCommand implements Command {
   public void run() {
     System.out.println("ShowStartCommand");
   }
+
+  @Override
+  public void check_flags() {
+
+  }
 }

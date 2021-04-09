@@ -12,4 +12,9 @@ public class StopCommand implements Command {
   public void run() {
     System.out.println("StopCommand");
   }
+
+  @Override
+  public void check_flags() {
+
+  }
 }

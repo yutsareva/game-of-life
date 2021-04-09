@@ -11,4 +11,7 @@ public class ResetCommand implements Command {
   public void run() {
     System.out.println("ResetCommand");
   }
+
+  @Override
+  public void check_flags() {}
 }

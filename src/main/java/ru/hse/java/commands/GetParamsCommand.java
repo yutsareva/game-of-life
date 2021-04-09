@@ -11,4 +11,7 @@ public class GetParamsCommand implements Command {
   public void run() {
     System.out.println("GetParamsCommand");
   }
+
+  @Override
+  public void check_flags() {}
 }

@@ -37,4 +37,9 @@ public class SetParamsCommand implements Command {
   public void run() {
     System.out.println("SetParamsCommand");
   }
+
+  @Override
+  public void check_flags() {
+
+  }
 }

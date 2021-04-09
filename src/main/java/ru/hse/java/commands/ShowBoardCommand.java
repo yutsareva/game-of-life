@@ -18,4 +18,9 @@ public class ShowBoardCommand implements Command {
   public void run() {
     System.out.println("ShowBoardCommand");
   }
+
+  @Override
+  public void check_flags() {
+
+  }
 }

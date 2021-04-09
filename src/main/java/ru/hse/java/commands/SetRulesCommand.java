@@ -18,4 +18,9 @@ public class SetRulesCommand implements Command {
   public void run() {
     System.out.println("InitializeCommand");
   }
+
+  @Override
+  public void check_flags() {
+
+  }
 }
