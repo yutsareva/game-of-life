@@ -68,12 +68,6 @@ public class RunCommand implements Command {
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
-//    Runner runner = new Runner(new StandartSettings(), new ConsoleDisplay());
-//    try {
-//      runner.run();
-//    } catch (InterruptedException e) {
-//      e.printStackTrace();
-//    }
   }
 
   @Override
