@@ -19,13 +19,11 @@ public class ShowStartCommand implements Command {
     FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE, "");
     SettingsFromFile settings = reader.readSettings();
     settings.setIterationCount(1);
-    if (check_flags()) {
-      Runner runner = new Runner(settings, new ConsoleDisplay());
-      try {
-        runner.run();
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
+    Runner runner = new Runner(settings, new ConsoleDisplay());
+    try {
+      runner.run();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
     }
   }
 
