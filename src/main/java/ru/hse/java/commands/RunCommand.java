@@ -61,7 +61,7 @@ public class RunCommand implements Command {
   @Override
   public void run() {
     try {
-      FilesReader reader = new FilesReader("DataExample.json", "");
+      FilesReader reader = new FilesReader("src/main/resources/examples/gosper_glider_gun.json", "");
       SettingsFromFile settings = reader.readSettings();
       Runner runner = new Runner(settings, new ConsoleDisplay());
       runner.run();
