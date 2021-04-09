@@ -16,10 +16,11 @@ import ru.hse.java.commands.ShowStartCommand;
 import ru.hse.java.commands.StopCommand;
 
 public class CLI {
+
   public static final String DEFAULT_CONFIG_FILE = "src/main/resources/default_configuration.json";
   public static final String CURRENT_CONFIG_FILE = "src/main/resources/current_configuration.json";
 
-  public static void main(String ... args) {
+  public static void main(String... args) {
     RunCommand runCommand = new RunCommand();
     InitializeCommand initializeCommandCmd = new InitializeCommand();
     SetRulesCommand setRulesCommand = new SetRulesCommand();

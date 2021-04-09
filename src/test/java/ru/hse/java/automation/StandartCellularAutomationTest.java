@@ -2,13 +2,15 @@ package ru.hse.java.automation;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
 import ru.hse.java.settings.Settings;
 import ru.hse.java.settings.StandartSettings;
 
 public class StandartCellularAutomationTest {
+
   @Test
-  public void create() {
+  public void simple() {
     Settings settings = new StandartSettings();
     CellularAutomaton automation = new StandartCellularAutomaton(settings);
     assertFalse(automation.gameFinished());

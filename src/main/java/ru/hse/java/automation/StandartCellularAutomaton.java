@@ -15,6 +15,7 @@ public class StandartCellularAutomaton extends CellularAutomaton {
   public StandartCellularAutomaton(Settings settings) {
     field = new Field(settings.getHeight(), settings.getWidth());
     var initialAliveCells = settings.getInitialAliveCells();
+    
     for (var cell : initialAliveCells) {
       var x = cell.getLeft();
       var y = cell.getRight();
@@ -34,6 +35,7 @@ public class StandartCellularAutomaton extends CellularAutomaton {
   public Field getNextIteration() {
     assert !gameFinished();  // TODO: Throw exception
     iterationsLeft--;
+
     if (!gameStarted) {
       gameStarted = true;
       return field;
@@ -41,12 +43,15 @@ public class StandartCellularAutomaton extends CellularAutomaton {
 
     List<Pair<Integer, Integer>> cellsToDie = new ArrayList<>();
     List<Pair<Integer, Integer>> cellsToRevive = new ArrayList<>();
+
     for (int i = 0; i < field.getHeight(); i++) {
       for (int j = 0; j < field.getWidth(); j++) {
         var aliveNeighbourCount = field.getAliveNeighbourCount(i, j);
+
         if (aliveNeighbourCount < 2 || aliveNeighbourCount > 3) {
           cellsToDie.add(new ImmutablePair<Integer, Integer>(i, j));
         }
+
         if (!field.isAlive(i, j) && aliveNeighbourCount == 3) {
           cellsToRevive.add(new ImmutablePair<Integer, Integer>(i, j));
         }

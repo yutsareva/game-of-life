@@ -6,65 +6,66 @@ import java.time.Duration;
 import java.util.List;
 
 public class SettingsFromFile extends Settings {
-    private int fieldHeight;
-    private int fieldWidth;
-    private int iterationCount;
-    private Duration iterationTimeInterval;
-    final private String fileName;
-    public List<Pair<Integer, Integer>> initialAliveCells;
 
-    public SettingsFromFile(int fieldHeight,
-                            int fieldWidth,
-                            int iterationCount,
-                            Duration iterationTimeInterval,
-                            String fileName,
-                            List<Pair<Integer, Integer>> initialAliveCells) {
-        this.fieldHeight = fieldHeight;
-        this.fieldWidth = fieldWidth;
-        this.iterationCount = iterationCount;
-        this.iterationTimeInterval = iterationTimeInterval;
-        this.fileName = fileName;
-        this.initialAliveCells = initialAliveCells;
-    }
+  private int fieldHeight;
+  private int fieldWidth;
+  private int iterationCount;
+  private Duration iterationTimeInterval;
+  final private String fileName;
+  public List<Pair<Integer, Integer>> initialAliveCells;
 
-    @Override
-    public Integer getHeight() {
-        return fieldHeight;
-    }
+  public SettingsFromFile(int fieldHeight,
+      int fieldWidth,
+      int iterationCount,
+      Duration iterationTimeInterval,
+      String fileName,
+      List<Pair<Integer, Integer>> initialAliveCells) {
+    this.fieldHeight = fieldHeight;
+    this.fieldWidth = fieldWidth;
+    this.iterationCount = iterationCount;
+    this.iterationTimeInterval = iterationTimeInterval;
+    this.fileName = fileName;
+    this.initialAliveCells = initialAliveCells;
+  }
 
-    public void setHeight(Integer height) {
-        fieldHeight = height;
-    }
+  @Override
+  public Integer getHeight() {
+    return fieldHeight;
+  }
 
-    @Override
-    public Integer getWidth() {
-        return fieldWidth;
-    }
+  public void setHeight(Integer height) {
+    fieldHeight = height;
+  }
 
-    public void setWidth(Integer width) {
-        fieldWidth = width;
-    }
+  @Override
+  public Integer getWidth() {
+    return fieldWidth;
+  }
 
-    @Override
-    public Duration getIterationTimeInterval() {
-        return iterationTimeInterval;
-    }
+  public void setWidth(Integer width) {
+    fieldWidth = width;
+  }
 
-    public void setIterationTimeInterval(Duration iterationTimeInterval) {
-        this.iterationTimeInterval = iterationTimeInterval;
-    }
+  @Override
+  public Duration getIterationTimeInterval() {
+    return iterationTimeInterval;
+  }
 
-    @Override
-    public List<Pair<Integer, Integer>> getInitialAliveCells() {
-        return initialAliveCells;
-    }
+  public void setIterationTimeInterval(Duration iterationTimeInterval) {
+    this.iterationTimeInterval = iterationTimeInterval;
+  }
 
-    @Override
-    public int getIterationCount() {
-        return iterationCount;
-    }
+  @Override
+  public List<Pair<Integer, Integer>> getInitialAliveCells() {
+    return initialAliveCells;
+  }
 
-    public void setIterationCount(int iterationCount) {
-        this.iterationCount = iterationCount;
-    }
+  @Override
+  public int getIterationCount() {
+    return iterationCount;
+  }
+
+  public void setIterationCount(int iterationCount) {
+    this.iterationCount = iterationCount;
+  }
 }

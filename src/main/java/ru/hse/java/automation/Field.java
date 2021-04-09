@@ -5,9 +5,11 @@ import java.util.BitSet;
 import java.util.List;
 
 public class Field {
+
   private final List<BitSet> matrix;
-  private int height;
-  private int width;
+  private final int height;
+  private final int width;
+
   Field(int fieldHeight, int fieldWidth) {
     this.height = fieldHeight;
     this.width = fieldWidth;
@@ -22,11 +24,11 @@ public class Field {
     return matrix.get(x).get(y);
   }
 
-  public void  killCell(int x, int y) {
+  public void killCell(int x, int y) {
     matrix.get(x).set(y, false);
   }
 
-  public void  reviveCell(int x, int y) {
+  public void reviveCell(int x, int y) {
     matrix.get(x).set(y, true);
   }
 
@@ -56,17 +58,15 @@ public class Field {
     if (x < height - 1 && y > 0) {
       count += isAlive(x + 1, y - 1) ? 1 : 0;
     }
-//    if (x == 3 && y == 0) {
-//      System.out.println(count);
-//    }
+
     return count;
   }
 
-  public int  getHeight() {
+  public int getHeight() {
     return height;
   }
 
-  public int  getWidth() {
+  public int getWidth() {
     return width;
   }
 }
