@@ -48,7 +48,7 @@ public class Field {
       count += isAlive(x, y + 1) ? 1 : 0;
     }
     if (x < height - 1 && y < width - 1) {
-      count += isAlive(x, y + 1) ? 1 : 0;
+      count += isAlive(x + 1, y + 1) ? 1 : 0;
     }
     if (x > 0 && y < width - 1) {
       count += isAlive(x - 1, y + 1) ? 1 : 0;
