@@ -17,7 +17,7 @@ public class Runner {
 
     public void run() throws InterruptedException {
         StandartCellularAutomaton automation = new StandartCellularAutomaton(settings);
-        for (int i = 0; i < settings.getIterationCount(); i++) {
+        for (int i = 0; i < settings.getIterationCount() || settings.getIterationCount() < 0; i++) {
             display.display(automation.getNextIteration());
             TimeUnit.MILLISECONDS.sleep(settings.getIterationTimeInterval().toMillis());
 
