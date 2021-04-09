@@ -88,5 +88,6 @@ public class RunCommand implements Command {
       System.out.println("'--iters_count' must be positive.");
       return;
     }
+    return;
   }
 }
