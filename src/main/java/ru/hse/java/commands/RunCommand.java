@@ -70,12 +70,12 @@ public class RunCommand implements Command {
     FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE, "");
     settings = reader.readSettings();
     if (check_flags()) {
-    Runner runner = new Runner(settings, new ConsoleDisplay());
-    try {
-      runner.run();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
+      Runner runner = new Runner(settings, new ConsoleDisplay());
+      try {
+        runner.run();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
     }
   }
 
