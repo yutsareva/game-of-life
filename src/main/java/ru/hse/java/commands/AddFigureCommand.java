@@ -29,12 +29,14 @@ public class AddFigureCommand implements Command {
   }
 
   @Override
-  public void check_flags() {
+  public boolean check_flags() {
     if (coordinates.size() != 2) {
       System.out.println("'--place' should be an array of size 2.");
-      return;
+      return false;
     }
 
     // Implement later I guess...
+
+    return true;
   }
 }

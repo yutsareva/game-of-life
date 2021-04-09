@@ -16,7 +16,15 @@ public class StandartCellularAutomaton extends CellularAutomaton {
     field = new Field(settings.getHeight(), settings.getWidth());
     var initialAliveCells = settings.getInitialAliveCells();
     for (var cell : initialAliveCells) {
-      field.reviveCell(cell.getLeft(), cell.getRight());
+      var x = cell.getLeft();
+      var y = cell.getRight();
+      if (x >= settings.getHeight() || y >= settings.getWidth()) {
+        System.out.println(
+            "Warning! You have an alive cell outside the bounds of the Field. "
+                + "Coordinates: (" + x + ", " + y + ")");
+        continue;
+      }
+      field.reviveCell(x, y);
     }
     iterationsLeft = settings.getIterationCount();
     gameStarted = false;

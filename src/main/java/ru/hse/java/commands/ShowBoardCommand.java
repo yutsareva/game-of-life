@@ -10,7 +10,8 @@ import com.beust.jcommander.Parameters;
 public class ShowBoardCommand implements Command {
   @Parameter(
       names = "--file",
-      description = "Input file."
+      description = "Input file.",
+      required = true
   )
   private String file;
   
@@ -20,7 +21,7 @@ public class ShowBoardCommand implements Command {
   }
 
   @Override
-  public void check_flags() {
-
+  public boolean check_flags() {
+    return true;
   }
 }

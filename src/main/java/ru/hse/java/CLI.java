@@ -16,11 +16,8 @@ import ru.hse.java.commands.ShowStartCommand;
 import ru.hse.java.commands.StopCommand;
 
 public class CLI {
-  public static final String DEFAULT_PARAMETERS_FILE = "src/main/java/resources/default_params.txt";
-  public static final String CURRENT_PARAMETERS_FILE = "src/main/java/resources/params.txt";
-  public static final String DEFAULT_RULES_FILE = "src/main/java/resources/default_rules.txt";
-  public static final String CURRENT_RULES_FILE = "src/main/java/resources/rules.txt";
-  public static final String INITIAL_CONFIGURATION = "src/main/java/resources/initial_configuration.txt";
+  public static final String DEFAULT_CONFIG_FILE = "src/main/resources/default_configuration.json";
+  public static final String CURRENT_CONFIG_FILE = "src/main/resources/current_configuration.json";
 
   public static void main(String ... args) {
     RunCommand runCommand = new RunCommand();
@@ -54,66 +51,21 @@ public class CLI {
         .build();
     jc.parse(args);
     String parsedCmdStr = jc.getParsedCommand();
-    try {
-      switch (parsedCmdStr) {
-        case "run":
-          runCommand.run();
-          break;
-
-        case "initialize":
-          initializeCommandCmd.run();
-          break;
-
-        case "set_rules":
-          setRulesCommand.run();
-          break;
-
-        case "set_params":
-          setParamsCommand.run();
-          break;
-
-        case "get_params":
-          getParamsCommand.run();
-          break;
-
-        case "add_dot":
-          addDotCommand.run();
-          break;
-
-        case "remove_dot":
-          removeDotCommand.run();
-          break;
-
-        case "add_figure":
-          addFigureCommand.run();
-          break;
-
-        case "show_start":
-          showStartCommand.run();
-          break;
-
-        case "reset":
-          resetCommand.run();
-          break;
-
-        case "show_board":
-          showBoardCommand.run();
-          break;
-
-        case "stop":
-          stopCommand.run();
-          break;
-
-        case "help":
-          jc.usage();
-          break;
-
-        default:
-          System.err.println("Invalid command: " + parsedCmdStr);
-      }
-    } catch (Exception e) {
-      System.out.println("No command specified :/");
-      System.out.println("Use 'help' command for more info.");
+    switch (parsedCmdStr) {
+      case "run" -> runCommand.run();
+      case "initialize" -> initializeCommandCmd.run();
+      case "set_rules" -> setRulesCommand.run();
+      case "set_params" -> setParamsCommand.run();
+      case "get_params" -> getParamsCommand.run();
+      case "add_dot" -> addDotCommand.run();
+      case "remove_dot" -> removeDotCommand.run();
+      case "add_figure" -> addFigureCommand.run();
+      case "show_start" -> showStartCommand.run();
+      case "reset" -> resetCommand.run();
+      case "show_board" -> showBoardCommand.run();
+      case "stop" -> stopCommand.run();
+      case "help" -> jc.usage();
+      default -> System.err.println("Invalid command: " + parsedCmdStr);
     }
   }
 }

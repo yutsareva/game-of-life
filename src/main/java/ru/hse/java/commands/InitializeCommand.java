@@ -20,5 +20,5 @@ public class InitializeCommand implements Command {
   }
 
   @Override
-  public void check_flags() {}
+  public boolean check_flags() { return true; }
 }

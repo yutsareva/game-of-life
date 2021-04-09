@@ -14,7 +14,7 @@ public class StopCommand implements Command {
   }
 
   @Override
-  public void check_flags() {
-
+  public boolean check_flags() {
+    return true;
   }
 }

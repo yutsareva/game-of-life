@@ -20,7 +20,6 @@ public class Runner {
         for (int i = 0; i < settings.getIterationCount() || settings.getIterationCount() < 0; i++) {
             display.display(automation.getNextIteration());
             TimeUnit.MILLISECONDS.sleep(settings.getIterationTimeInterval().toMillis());
-
         }
     }
 }

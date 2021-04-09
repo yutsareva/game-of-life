@@ -22,10 +22,10 @@ public class RemoveDotCommand implements Command {
   }
 
   @Override
-  public void check_flags() {
+  public boolean check_flags() {
     if (coordinates.size() != 2) {
       System.out.println("'--place' should be an array of size 2.");
-      return;
+      return false;
     }
     // Change after Reader is implemented.
 //    var boardSize = Reader().Read(CLI.CURRENT_PARAMETERS_FILE).getSize();
@@ -36,5 +36,6 @@ public class RemoveDotCommand implements Command {
 //    }
 
     // Check if cell is actually alive and remove it from the board if it is.
+    return true;
   }
 }

@@ -23,10 +23,10 @@ public class AddDotCommand implements Command {
   }
 
   @Override
-  public void check_flags() {
+  public boolean check_flags() {
     if (coordinates.size() != 2) {
       System.out.println("'--place' should be an array of size 2.");
-      return;
+      return false;
     }
     // Change after Reader is implemented.
 //    var boardSize = Reader().Read(CLI.CURRENT_PARAMETERS_FILE).getSize();
@@ -37,5 +37,7 @@ public class AddDotCommand implements Command {
 //    }
 
     // Check if cell is already alive and add if to the board if it's not.
+
+    return true;
   }
 }

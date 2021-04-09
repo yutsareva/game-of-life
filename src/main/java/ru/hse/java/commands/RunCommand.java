@@ -2,10 +2,14 @@ package ru.hse.java.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+import ru.hse.java.CLI;
 import ru.hse.java.ConsoleDisplay;
 import ru.hse.java.Display;
 import ru.hse.java.Runner;
 import ru.hse.java.reader.FilesReader;
+import ru.hse.java.settings.Settings;
 import ru.hse.java.settings.SettingsFromFile;
 import ru.hse.java.settings.StandartSettings;
 
@@ -18,13 +22,14 @@ import java.util.List;
 public class RunCommand implements Command {
   @Parameter(
       names = "--speed",
-      description = "Simulation speed."
+      description = "Simulation speed in ms."
   )
-  private double speed;
+  private int speed;
 
   @Parameter(
       names = "--size",
-      description = "Board size."
+      description = "Board size.",
+      arity = 2
   )
   private List<Integer> size;
 
@@ -58,36 +63,46 @@ public class RunCommand implements Command {
   )
   private double color;
 
+  private SettingsFromFile settings;
+
   @Override
   public void run() {
+    FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE, "");
+    settings = reader.readSettings();
+    if (check_flags()) {
+    Runner runner = new Runner(settings, new ConsoleDisplay());
     try {
-      FilesReader reader = new FilesReader("src/main/resources/examples/gosper_glider_gun.json", "");
-      SettingsFromFile settings = reader.readSettings();
-      Runner runner = new Runner(settings, new ConsoleDisplay());
       runner.run();
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
     }
   }
 
   @Override
-  public void check_flags() {
-    if (speed <= 0) {
+  public boolean check_flags() {
+    if (speed < 0) {
       System.out.println("'--speed' must be a positive.");
-      return;
+      return false;
+    } else if (speed > 0) {
+      settings.setIterationTimeInterval(Duration.ofMillis(speed));
     }
-    if (size.size() != 2) {
-      System.out.println("'--size' must be an array of size 2.");
-      return;
+
+    if (size != null) {
+      if (size.get(0) <= 0 || size.get(1) <= 0) {
+        System.out.println("'--size' elements must be positive.");
+        return false;
+      }
+      settings.setHeight(size.get(0));
+      settings.setWidth(size.get(1));
     }
-    if (size.get(0) <= 0 || size.get(1) <= 0) {
-      System.out.println("'--size' elements must be positive.");
-      return;
-    }
-    if (iters_count <= 0) {
+
+    if (iters_count < 0) {
       System.out.println("'--iters_count' must be positive.");
-      return;
+      return false;
+    } else if (iters_count > 0) {
+      settings.setIterationCount(iters_count);
     }
-    return;
+    return true;
   }
 }

@@ -11,5 +11,5 @@ public class HelpCommand implements Command {
   public void run() {}
 
   @Override
-  public void check_flags() {}
+  public boolean check_flags() { return true;}
 }
