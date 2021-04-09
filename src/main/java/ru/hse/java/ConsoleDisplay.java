@@ -6,7 +6,15 @@ public class ConsoleDisplay implements Display {
 
   @Override
   public void display(Field field) {
-    // Not implemented.
-    return;
+    for (int i = 0; i < field.getHeight(); i++) {
+      for (int j = 0; j < field.getWidth(); j++) {
+        if (field.isAlive(i, j)) {
+          System.out.print(".");
+        } else {
+          System.out.print("*");
+        }
+        System.out.println();
+      }
+    }
   }
 }
