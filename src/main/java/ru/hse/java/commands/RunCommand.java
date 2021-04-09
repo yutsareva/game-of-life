@@ -97,10 +97,10 @@ public class RunCommand implements Command {
       settings.setWidth(size.get(1));
     }
 
-    if (iters_count < 0) {
-      System.out.println("'--iters_count' must be positive.");
+    if (iters_count < -1) {
+      System.out.println("'--iters_count' must be no less than -1 (-1 for infinite game)");
       return false;
-    } else if (iters_count > 0) {
+    } else {
       settings.setIterationCount(iters_count);
     }
     return true;
