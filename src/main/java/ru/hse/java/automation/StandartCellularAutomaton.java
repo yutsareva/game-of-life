@@ -12,7 +12,7 @@ public class StandartCellularAutomaton extends CellularAutomaton {
   private int iterationsLeft;
   private boolean gameStarted;
 
-  StandartCellularAutomaton(Settings settings) {
+  public StandartCellularAutomaton(Settings settings) {
     field = new Field(settings.getHeight(), settings.getWidth());
     var initialAliveCells = settings.getInitialAliveCells();
     for (var cell : initialAliveCells) {
