@@ -1,8 +1,13 @@
 package ru.hse.java.commands;
 
 import com.beust.jcommander.Parameters;
+import ru.hse.java.CLI;
 import ru.hse.java.ConsoleDisplay;
 import ru.hse.java.Display;
+import ru.hse.java.Runner;
+import ru.hse.java.reader.FilesReader;
+import ru.hse.java.settings.Settings;
+import ru.hse.java.settings.SettingsFromFile;
 
 @Parameters(
     commandNames = { "show_start" },
@@ -11,12 +16,21 @@ import ru.hse.java.Display;
 public class ShowStartCommand implements Command {
   @Override
   public void run() {
-    System.out.println("ShowStartCommand");
+    FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE, "");
+    SettingsFromFile settings = reader.readSettings();
+    settings.setIterationCount(1);
+    if (check_flags()) {
+      Runner runner = new Runner(settings, new ConsoleDisplay());
+      try {
+        runner.run();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
   }
 
   @Override
   public boolean check_flags() {
-    ConsoleDisplay display = new ConsoleDisplay();
     return true;
   }
 }
