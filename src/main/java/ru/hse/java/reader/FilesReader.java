@@ -39,25 +39,24 @@ public class FilesReader extends Reader {
         try {
             JSONArray a = (JSONArray) parser.parse(new FileReader(this.settingsFileName));
             JSONObject base_params = (JSONObject) a.get(0);
-            Integer height = Integer.getInteger((String)base_params.get("height"));
-            Integer weight = Integer.getInteger((String)base_params.get("weight"));
-            Integer iterationsCount = Integer.getInteger((String)base_params.get("iterationsCount"));
-            Duration duration = Duration.ofSeconds(Integer.getInteger((String)base_params.get("duration")));
-
+            int height = ((Long) base_params.get("height")).intValue();
+            int width = ((Long) base_params.get("width")).intValue();
+            Duration duration = Duration.ofMillis(((Long) base_params.get("duration")).intValue());
+            int iterationsCount = ((Long) base_params.get("iterationsCount")).intValue();
             JSONObject points_obj = (JSONObject) a.get(1);
             JSONArray points = (JSONArray) points_obj.get("points");
             for (Object o : points)
             {
                 JSONObject point = (JSONObject) o;
 
-                Integer x = Integer.getInteger((String) point.get("x"));
-                Integer y = Integer.getInteger((String) point.get("y"));
+                Integer x = ((Long) point.get("x")).intValue();
+                Integer y = ((Long) point.get("y")).intValue();
 
                 Pair<Integer, Integer> curPoint = new ImmutablePair<>(x, y );
                 initialAliveCells.add(curPoint);
             }
             SettingsFromFile settings = new SettingsFromFile(height,
-                    weight,
+                    width,
                     iterationsCount,
                     duration,
                     this.settingsFileName,

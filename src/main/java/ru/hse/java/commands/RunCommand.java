@@ -60,20 +60,20 @@ public class RunCommand implements Command {
 
   @Override
   public void run() {
-    System.out.println("RunCommand");
-//    try {
-//      FilesReader reader = new FilesReader("DataExample.json", "");
-//      SettingsFromFile settings = reader.readSettings();
-//      Runner runner = new Runner(settings, new ConsoleDisplay());
-//    } catch (Exception e) {
-//      System.out.println("mem");
-//    }
-    Runner runner = new Runner(new StandartSettings(), new ConsoleDisplay());
     try {
+      FilesReader reader = new FilesReader("/Users/avonazhrets/Uni/Java/project/game-of-life/DataExample.json", "");
+      SettingsFromFile settings = reader.readSettings();
+      Runner runner = new Runner(settings, new ConsoleDisplay());
       runner.run();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
+//    Runner runner = new Runner(new StandartSettings(), new ConsoleDisplay());
+//    try {
+//      runner.run();
+//    } catch (InterruptedException e) {
+//      e.printStackTrace();
+//    }
   }
 
   @Override

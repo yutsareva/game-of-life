@@ -19,7 +19,7 @@ public class Runner {
         StandartCellularAutomaton automation = new StandartCellularAutomaton(settings);
         for (int i = 0; i < settings.getIterationCount(); i++) {
             display.display(automation.getNextIteration());
-            TimeUnit.SECONDS.sleep(settings.getIterationTimeInterval().getSeconds());
+            TimeUnit.MILLISECONDS.sleep(settings.getIterationTimeInterval().toMillis());
         }
     }
 }
