@@ -1,5 +1,7 @@
 package ru.hse.java.reader;
 
+import ru.hse.java.settings.Settings;
+
 public class ConsoleReader extends Reader {
 
     @Override
@@ -7,8 +9,9 @@ public class ConsoleReader extends Reader {
         System.out.println("ConsoleReader/@readField");
     }
 
-//    @Override
-//    void readSettings() {
-//        System.out.println("ConsoleReader/@readRules");
-//    }
+    @Override
+    Settings readSettings() {
+        System.out.println("ConsoleReader/@readRules");
+        return null;
+    }
 }

@@ -1,14 +1,25 @@
 package ru.hse.java;
 
 import ru.hse.java.automation.StandartCellularAutomaton;
+import ru.hse.java.settings.Settings;
+import ru.hse.java.settings.SettingsFromFile;
 import ru.hse.java.settings.StandartSettings;
+import java.util.concurrent.TimeUnit;
 
 public class Runner {
-    Runner(StandartSettings settings, Display display) throws InterruptedException {
+    private final Settings settings;
+    private final Display display;
+
+    public Runner(Settings settings, Display display) {
+        this.settings = settings;
+        this.display = display;
+    }
+
+    public void run() throws InterruptedException {
         StandartCellularAutomaton automation = new StandartCellularAutomaton(settings);
         for (int i = 0; i < settings.getIterationCount(); i++) {
             display.display(automation.getNextIteration());
-            Thread.sleep(settings.getIterationTimeInterval().toMillis());
+            TimeUnit.SECONDS.sleep(settings.getIterationTimeInterval().getSeconds());
         }
     }
 }

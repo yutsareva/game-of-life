@@ -56,6 +56,9 @@ public class Field {
     if (x < height - 1 && y > 0) {
       count += isAlive(x + 1, y - 1) ? 1 : 0;
     }
+//    if (x == 3 && y == 0) {
+//      System.out.println(count);
+//    }
     return count;
   }
 

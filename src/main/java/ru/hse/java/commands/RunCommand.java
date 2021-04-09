@@ -2,6 +2,12 @@ package ru.hse.java.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import ru.hse.java.ConsoleDisplay;
+import ru.hse.java.Display;
+import ru.hse.java.Runner;
+import ru.hse.java.reader.FilesReader;
+import ru.hse.java.settings.SettingsFromFile;
+import ru.hse.java.settings.StandartSettings;
 
 import java.util.List;
 
@@ -53,7 +59,22 @@ public class RunCommand implements Command {
   private double color;
 
   @Override
-  public void run() { System.out.println("RunCommand"); }
+  public void run() {
+    System.out.println("RunCommand");
+//    try {
+//      FilesReader reader = new FilesReader("DataExample.json", "");
+//      SettingsFromFile settings = reader.readSettings();
+//      Runner runner = new Runner(settings, new ConsoleDisplay());
+//    } catch (Exception e) {
+//      System.out.println("mem");
+//    }
+    Runner runner = new Runner(new StandartSettings(), new ConsoleDisplay());
+    try {
+      runner.run();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
 
   @Override
   public void check_flags() {

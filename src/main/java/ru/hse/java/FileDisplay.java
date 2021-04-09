@@ -13,9 +13,9 @@ public class FileDisplay implements Display {
       for (int i = 0; i < field.getHeight(); i++) {
         for (int j = 0; j < field.getWidth(); j++) {
           if (field.isAlive(i, j)) {
-            file.write(".");
-          } else {
             file.write("*");
+          } else {
+            file.write(".");
           }
           file.write("\n");
         }

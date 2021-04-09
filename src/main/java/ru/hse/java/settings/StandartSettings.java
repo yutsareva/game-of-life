@@ -10,7 +10,7 @@ import org.apache.commons.lang3.tuple.Pair;
 public class StandartSettings extends Settings {
 
   final private int fieldSize = 5;
-  final private int iterationCount = 10;
+  final private int iterationCount = 20;
   final private Duration iterationTimeInterval = Duration.ofSeconds(1);
   // TODO: support several standard configurations
   private static List<Pair<Integer, Integer>> initialAliveCells = Collections.unmodifiableList(

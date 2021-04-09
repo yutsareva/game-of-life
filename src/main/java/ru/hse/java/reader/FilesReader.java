@@ -32,7 +32,7 @@ public class FilesReader extends Reader {
         System.out.println("FilesReader/@readField");
     }
 
-//    @Override
+    @Override
     public SettingsFromFile readSettings() {
         List<Pair<Integer, Integer>> initialAliveCells = new ArrayList<>();
         JSONParser parser = new JSONParser();
@@ -64,6 +64,7 @@ public class FilesReader extends Reader {
                     initialAliveCells);
             return settings;
         } catch (IOException | ParseException e) {
+            System.out.println("in reader catch");
             e.printStackTrace();
             return null;
         }
