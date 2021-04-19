@@ -16,6 +16,7 @@ import java.util.List;
     commandDescription = "Run simulation."
 )
 public class RunCommand implements Command {
+
   @Parameter(
       names = "--speed",
       description = "Simulation speed in ms."

@@ -7,6 +7,7 @@ import com.beust.jcommander.Parameters;
     commandDescription = "Reset simulation parameters to default values."
 )
 public class ResetCommand implements Command {
+
   @Override
   public void run() {
     System.out.println("ResetCommand");

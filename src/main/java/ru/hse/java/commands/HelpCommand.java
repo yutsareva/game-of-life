@@ -7,6 +7,7 @@ import com.beust.jcommander.Parameters;
     commandDescription = ""
 )
 public class HelpCommand implements Command {
+
   @Override
   public void run() {}
 

@@ -8,6 +8,7 @@ import com.beust.jcommander.Parameters;
     commandDescription = "Initialize starting configuration of alive cells."
 )
 public class InitializeCommand implements Command {
+
   @Parameter(
       names = "--file",
       description = "Input file."

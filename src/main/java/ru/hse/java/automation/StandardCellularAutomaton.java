@@ -7,17 +7,17 @@ import org.apache.commons.lang3.tuple.Pair;
 import ru.hse.java.settings.AutomationRules;
 import ru.hse.java.settings.Settings;
 
-public class StandartCellularAutomaton extends CellularAutomaton {
+public class StandardCellularAutomaton extends CellularAutomaton {
 
   private final Field field;
   private int iterationsLeft;
   private boolean gameStarted;
   private AutomationRules automationRules;
 
-  public StandartCellularAutomaton(Settings settings) {
+  public StandardCellularAutomaton(Settings settings) {
     field = new Field(settings.getHeight(), settings.getWidth());
     var initialAliveCells = settings.getInitialAliveCells();
-    
+
     for (var cell : initialAliveCells) {
       var x = cell.getLeft();
       var y = cell.getRight();
@@ -57,7 +57,8 @@ public class StandartCellularAutomaton extends CellularAutomaton {
           cellsToDie.add(new ImmutablePair<Integer, Integer>(i, j));
         }
 
-        if (!field.isAlive(i, j) && automationRules.getAliveNeighborsToDie().contains(aliveNeighbourCount)) {
+        if (!field.isAlive(i, j) && automationRules.getAliveNeighborsToDie()
+            .contains(aliveNeighbourCount)) {
           cellsToRevive.add(new ImmutablePair<Integer, Integer>(i, j));
         }
       }

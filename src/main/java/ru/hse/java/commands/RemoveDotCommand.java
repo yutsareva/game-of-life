@@ -9,6 +9,7 @@ import java.util.List;
     commandDescription = "Remove alive cell simulation."
 )
 public class RemoveDotCommand implements Command {
+
   @Parameter(
       names = "--place",
       description = "Remove alive cell by coordinates.",

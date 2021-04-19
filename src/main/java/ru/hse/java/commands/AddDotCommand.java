@@ -10,6 +10,7 @@ import ru.hse.java.CLI;
     commandDescription = "Add new alive cell."
 )
 public class AddDotCommand implements Command {
+
   @Parameter(
       names = "--place",
       description = "Add alive cell by coordinates.",

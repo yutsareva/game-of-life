@@ -12,13 +12,14 @@ import ru.hse.java.settings.Settings;
     commandDescription = "Show given board."
 )
 public class ShowBoardCommand implements Command {
+
   @Parameter(
       names = "--file",
       description = "Input file.",
       required = true
   )
   private String file;
-  
+
   @Override
   public void run() {
     FilesReader reader = new FilesReader(file, "");

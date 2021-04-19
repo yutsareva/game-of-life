@@ -8,6 +8,7 @@ import com.beust.jcommander.Parameters;
     commandDescription = "Change rules."
 )
 public class SetRulesCommand implements Command {
+
   @Parameter(
       names = "--file",
       description = "Input file."

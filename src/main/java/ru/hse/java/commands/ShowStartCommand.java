@@ -3,18 +3,16 @@ package ru.hse.java.commands;
 import com.beust.jcommander.Parameters;
 import ru.hse.java.CLI;
 import ru.hse.java.ConsoleDisplay;
-import ru.hse.java.Display;
 import ru.hse.java.Runner;
 import ru.hse.java.reader.FilesReader;
 import ru.hse.java.settings.Settings;
-import ru.hse.java.settings.SettingsFromFile;
-import ru.hse.java.settings.parser.SettingsParser;
 
 @Parameters(
     commandNames = { "show_start" },
     commandDescription = "Show starting board."
 )
 public class ShowStartCommand implements Command {
+
   @Override
   public void run() {
     FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE, "");

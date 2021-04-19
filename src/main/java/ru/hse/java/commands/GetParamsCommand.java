@@ -7,11 +7,14 @@ import com.beust.jcommander.Parameters;
     commandDescription = "Print current parameters of the simulation."
 )
 public class GetParamsCommand implements Command {
+
   @Override
   public void run() {
     System.out.println("GetParamsCommand");
   }
 
   @Override
-  public boolean check_flags() { return true; }
+  public boolean check_flags() {
+    return true;
+  }
 }

@@ -9,6 +9,7 @@ import java.util.List;
     commandDescription = "Change simulation parameters."
 )
 public class SetParamsCommand implements Command {
+  
   @Parameter(
       names = "--speed",
       description = "Simulation speed (ms)."

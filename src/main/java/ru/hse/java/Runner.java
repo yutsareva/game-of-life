@@ -1,7 +1,7 @@
 package ru.hse.java;
 
 import ru.hse.java.automation.CellularAutomaton;
-import ru.hse.java.automation.StandartCellularAutomaton;
+import ru.hse.java.automation.StandardCellularAutomaton;
 import ru.hse.java.settings.Settings;
 
 import java.util.Scanner;
@@ -18,7 +18,7 @@ public class Runner {
   }
 
   public void run() throws InterruptedException {
-    CellularAutomaton automation = new StandartCellularAutomaton(settings);
+    CellularAutomaton automation = new StandardCellularAutomaton(settings);
     while (true) {
       for (int i = 0; i < settings.getIterationCount() || settings.getIterationCount() < 0; i++) {
         display.display(automation.getNextIteration());
@@ -31,7 +31,7 @@ public class Runner {
         String input_from_user = scanner.next();
         System.out.println();
         if (input_from_user.equalsIgnoreCase("S")) {
-          automation = new StandartCellularAutomaton(settings);
+          automation = new StandardCellularAutomaton(settings);
           break;
         } else if (input_from_user.equalsIgnoreCase("C")) {
           break;

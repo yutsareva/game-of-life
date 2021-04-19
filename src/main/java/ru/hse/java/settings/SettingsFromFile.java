@@ -33,18 +33,15 @@ public class SettingsFromFile extends Settings {
     return fieldSettings.getHeight();
   }
 
-
   @Override
   public Integer getWidth() {
     return fieldSettings.getWidth();
   }
 
-
   @Override
   public Duration getIterationTimeInterval() {
     return iterationTimeInterval;
   }
-
 
   @Override
   public List<Pair<Integer, Integer>> getInitialAliveCells() {
