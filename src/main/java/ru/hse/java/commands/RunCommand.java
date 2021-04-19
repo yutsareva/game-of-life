@@ -3,15 +3,11 @@ package ru.hse.java.commands;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 import ru.hse.java.CLI;
 import ru.hse.java.ConsoleDisplay;
-import ru.hse.java.Display;
 import ru.hse.java.Runner;
 import ru.hse.java.reader.FilesReader;
 import ru.hse.java.settings.Settings;
-import ru.hse.java.settings.SettingsFromFile;
-import ru.hse.java.settings.StandartSettings;
 
 import java.util.List;
 
@@ -63,7 +59,7 @@ public class RunCommand implements Command {
   )
   private double color;
 
-  private SettingsFromFile settings;
+  private Settings settings;
 
   @Override
   public void run() {

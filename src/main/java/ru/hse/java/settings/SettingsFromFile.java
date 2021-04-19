@@ -7,57 +7,48 @@ import java.util.List;
 
 public class SettingsFromFile extends Settings {
 
-  private int fieldHeight;
-  private int fieldWidth;
+  private final AutomationRules automationRules;
+  private final FieldSettings fieldSettings;
+
   private int iterationCount;
   private Duration iterationTimeInterval;
-  final private String fileName;
-  public List<Pair<Integer, Integer>> initialAliveCells;
 
-  public SettingsFromFile(int fieldHeight,
-      int fieldWidth,
+  private final InitialConfiguration initialConfiguration;
+
+  public SettingsFromFile(
+      FieldSettings fieldSettings,
+      AutomationRules automationRules,
+      InitialConfiguration initialConfiguration,
       int iterationCount,
-      Duration iterationTimeInterval,
-      String fileName,
-      List<Pair<Integer, Integer>> initialAliveCells) {
-    this.fieldHeight = fieldHeight;
-    this.fieldWidth = fieldWidth;
+      Duration iterationTimeInterval) {
+    this.fieldSettings = fieldSettings;
+    this.automationRules = automationRules;
     this.iterationCount = iterationCount;
     this.iterationTimeInterval = iterationTimeInterval;
-    this.fileName = fileName;
-    this.initialAliveCells = initialAliveCells;
+    this.initialConfiguration = initialConfiguration;
   }
 
   @Override
   public Integer getHeight() {
-    return fieldHeight;
+    return fieldSettings.getHeight();
   }
 
-  public void setHeight(Integer height) {
-    fieldHeight = height;
-  }
 
   @Override
   public Integer getWidth() {
-    return fieldWidth;
+    return fieldSettings.getWidth();
   }
 
-  public void setWidth(Integer width) {
-    fieldWidth = width;
-  }
 
   @Override
   public Duration getIterationTimeInterval() {
     return iterationTimeInterval;
   }
 
-  public void setIterationTimeInterval(Duration iterationTimeInterval) {
-    this.iterationTimeInterval = iterationTimeInterval;
-  }
 
   @Override
   public List<Pair<Integer, Integer>> getInitialAliveCells() {
-    return initialAliveCells;
+    return initialConfiguration.getInitialAliveCells();
   }
 
   @Override
@@ -65,7 +56,23 @@ public class SettingsFromFile extends Settings {
     return iterationCount;
   }
 
+  @Override
   public void setIterationCount(int iterationCount) {
     this.iterationCount = iterationCount;
+  }
+
+  @Override
+  public void setIterationTimeInterval(Duration iterationTimeInterval) {
+    this.iterationTimeInterval = iterationTimeInterval;
+  }
+
+  @Override
+  public void setWidth(Integer width) {
+    fieldSettings.setWidth(width);
+  }
+
+  @Override
+  public void setHeight(Integer height) {
+    fieldSettings.setHeight(height);
   }
 }

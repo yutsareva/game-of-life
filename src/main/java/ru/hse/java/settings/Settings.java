@@ -15,5 +15,13 @@ public abstract class Settings {
   public abstract List<Pair<Integer, Integer>> getInitialAliveCells();
 
   public abstract int getIterationCount();
-//  String getAliveCellColor();
+
+  public abstract void setIterationCount(int iterationCount);
+
+  public abstract void setIterationTimeInterval(Duration iterationTimeInterval);
+
+  public abstract void setHeight(Integer height);
+
+  public abstract void setWidth(Integer width);
+
 }

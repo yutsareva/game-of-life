@@ -8,6 +8,7 @@ import ru.hse.java.Runner;
 import ru.hse.java.reader.FilesReader;
 import ru.hse.java.settings.Settings;
 import ru.hse.java.settings.SettingsFromFile;
+import ru.hse.java.settings.parser.SettingsParser;
 
 @Parameters(
     commandNames = { "show_start" },
@@ -17,7 +18,7 @@ public class ShowStartCommand implements Command {
   @Override
   public void run() {
     FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE, "");
-    SettingsFromFile settings = reader.readSettings();
+    Settings settings = reader.readSettings();
     settings.setIterationCount(1);
     Runner runner = new Runner(settings, new ConsoleDisplay());
     try {

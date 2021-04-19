@@ -2,11 +2,10 @@ package ru.hse.java.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
-import ru.hse.java.CLI;
 import ru.hse.java.ConsoleDisplay;
 import ru.hse.java.Runner;
 import ru.hse.java.reader.FilesReader;
-import ru.hse.java.settings.SettingsFromFile;
+import ru.hse.java.settings.Settings;
 
 @Parameters(
     commandNames = { "show_board" },
@@ -23,7 +22,7 @@ public class ShowBoardCommand implements Command {
   @Override
   public void run() {
     FilesReader reader = new FilesReader(file, "");
-    SettingsFromFile settings = reader.readSettings();
+    Settings settings = reader.readSettings();
     settings.setIterationCount(1);
     Runner runner = new Runner(settings, new ConsoleDisplay());
     try {

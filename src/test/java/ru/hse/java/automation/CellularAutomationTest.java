@@ -5,13 +5,14 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 import ru.hse.java.settings.Settings;
-import ru.hse.java.settings.StandartSettings;
+import ru.hse.java.settings.parser.SettingsParser;
 
-public class StandartCellularAutomationTest {
+public class CellularAutomationTest {
 
   @Test
   public void simple() {
-    Settings settings = new StandartSettings();
+    Settings settings = SettingsParser.parse("src/main/resources/default_configuration.json");
+    assert settings != null;
     CellularAutomaton automation = new StandartCellularAutomaton(settings);
     assertFalse(automation.gameFinished());
 
