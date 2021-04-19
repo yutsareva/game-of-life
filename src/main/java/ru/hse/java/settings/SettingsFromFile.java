@@ -57,6 +57,11 @@ public class SettingsFromFile extends Settings {
   }
 
   @Override
+  public AutomationRules getAutomationRules() {
+    return automationRules;
+  }
+
+  @Override
   public void setIterationCount(int iterationCount) {
     this.iterationCount = iterationCount;
   }

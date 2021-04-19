@@ -4,8 +4,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
+import java.util.Set;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.json.simple.JSONArray;
@@ -55,15 +57,21 @@ public class SettingsParser {
 
   static private AutomationRules parseAutomationRules(JSONObject automationRules) {
     JSONArray aliveNeighborsToDie = (JSONArray) automationRules.get("alive_neighbors_to_die");
-    List<Integer> parsedAliveNeighborsToDie = new ArrayList<>();
+    Set<Integer> parsedAliveNeighborsToDie = new HashSet<>();
     for (Object elem : aliveNeighborsToDie) {
       parsedAliveNeighborsToDie.add(((Long) elem).intValue());
     }
 
     JSONArray aliveNeighborsToRevive = (JSONArray) automationRules.get("alive_neighbors_to_revive");
-    List<Integer> parsedAliveNeighborsToRevive = new ArrayList<>();
+    Set<Integer> parsedAliveNeighborsToRevive = new HashSet<>();
     for (Object elem : aliveNeighborsToRevive) {
       parsedAliveNeighborsToRevive.add(((Long) elem).intValue());
+    }
+
+    Set<Integer> intersection = new HashSet<Integer>(parsedAliveNeighborsToDie);
+    intersection.retainAll(parsedAliveNeighborsToRevive);
+    if (!intersection.isEmpty()) {
+      throw new InvalidSettings("Invalid automation rules.");
     }
 
     return new AutomationRules(parsedAliveNeighborsToDie, parsedAliveNeighborsToRevive);

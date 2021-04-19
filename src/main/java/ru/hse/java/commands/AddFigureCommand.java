@@ -5,13 +5,14 @@ import com.beust.jcommander.Parameters;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Parameters(
     commandNames = { "add_figure" },
     commandDescription = "Add new figure."
 )
 public class AddFigureCommand implements Command {
-  private static final HashMap<String, int[][]> FIGURES = (HashMap<String, int[][]>) java.util.Map
+  private static final Map<String, int[][]> FIGURES = (Map<String, int[][]>) java.util.Map
         .ofEntries(java.util.Map.entry("block", new int[][]{{0, 0}, {0, 1}, {1, 1}, {1, 1}}),
             java.util.Map.entry("beehive", new int[][]{{0, 1}, {0, 2}, {1, 0}, {1, 3}, {2, 1}, {2, 2}}),
             java.util.Map.entry("loaf", new int[][]{{0, 1}, {0, 2}, {1, 0}, {1, 3}, {2, 1}, {2, 3}, {3, 2}}),

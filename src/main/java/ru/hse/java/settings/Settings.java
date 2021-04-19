@@ -16,6 +16,8 @@ public abstract class Settings {
 
   public abstract int getIterationCount();
 
+  public abstract AutomationRules getAutomationRules();
+
   public abstract void setIterationCount(int iterationCount);
 
   public abstract void setIterationTimeInterval(Duration iterationTimeInterval);

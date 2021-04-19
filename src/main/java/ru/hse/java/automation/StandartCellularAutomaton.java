@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+import ru.hse.java.settings.AutomationRules;
 import ru.hse.java.settings.Settings;
 
 public class StandartCellularAutomaton extends CellularAutomaton {
@@ -11,6 +12,7 @@ public class StandartCellularAutomaton extends CellularAutomaton {
   private final Field field;
   private int iterationsLeft;
   private boolean gameStarted;
+  private AutomationRules automationRules;
 
   public StandartCellularAutomaton(Settings settings) {
     field = new Field(settings.getHeight(), settings.getWidth());
@@ -29,11 +31,14 @@ public class StandartCellularAutomaton extends CellularAutomaton {
     }
     iterationsLeft = settings.getIterationCount();
     gameStarted = false;
+    automationRules = settings.getAutomationRules();
   }
 
   @Override
   public Field getNextIteration() {
-    assert !gameFinished();  // TODO: Throw exception
+    if (gameFinished()) {
+      throw new RuntimeException("Game finished. Can not build new iteration.");
+    }
     iterationsLeft--;
 
     if (!gameStarted) {
@@ -48,11 +53,11 @@ public class StandartCellularAutomaton extends CellularAutomaton {
       for (int j = 0; j < field.getWidth(); j++) {
         var aliveNeighbourCount = field.getAliveNeighbourCount(i, j);
 
-        if (aliveNeighbourCount < 2 || aliveNeighbourCount > 3) {
+        if (automationRules.getAliveNeighborsToRevive().contains(aliveNeighbourCount)) {
           cellsToDie.add(new ImmutablePair<Integer, Integer>(i, j));
         }
 
-        if (!field.isAlive(i, j) && aliveNeighbourCount == 3) {
+        if (!field.isAlive(i, j) && automationRules.getAliveNeighborsToDie().contains(aliveNeighbourCount)) {
           cellsToRevive.add(new ImmutablePair<Integer, Integer>(i, j));
         }
       }
