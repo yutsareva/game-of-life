@@ -64,7 +64,7 @@ public class RunCommand implements Command {
 
   @Override
   public void run() {
-    FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE, "");
+    FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE);
     settings = reader.readSettings();
     if (check_flags()) {
       Runner runner = new Runner(settings, new ConsoleDisplay());

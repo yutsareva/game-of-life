@@ -15,7 +15,7 @@ public class ShowStartCommand implements Command {
 
   @Override
   public void run() {
-    FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE, "");
+    FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE);
     Settings settings = reader.readSettings();
     settings.setIterationCount(1);
     Runner runner = new Runner(settings, new ConsoleDisplay());

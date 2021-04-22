@@ -6,6 +6,5 @@ import ru.hse.java.settings.Settings;
 import java.io.FileNotFoundException;
 
 public abstract class Reader {
-    abstract void readField();
-    abstract Settings readSettings() throws FileNotFoundException, ParseException;
+    public abstract Settings readSettings() throws FileNotFoundException, ParseException;
 }

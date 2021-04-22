@@ -22,7 +22,7 @@ public class ShowBoardCommand implements Command {
 
   @Override
   public void run() {
-    FilesReader reader = new FilesReader(file, "");
+    FilesReader reader = new FilesReader(file);
     Settings settings = reader.readSettings();
     settings.setIterationCount(1);
     Runner runner = new Runner(settings, new ConsoleDisplay());
