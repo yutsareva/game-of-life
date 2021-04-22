@@ -10,3 +10,5 @@ $ java -jar target/game-of-life-1.0.jar run
 ```bash
 $ java -jar target/game-of-life-1.0.jar help
 ```
+
+![hippo](https://media.giphy.com/media/tZOXaZeACq20egmSrc/giphy.gif)
