@@ -7,7 +7,7 @@ import java.io.FileWriter;
 public class FileDisplay implements Display {
 
   @Override
-  public void display(Field field) {
+  public void display(Field field, boolean clear) {
     try {
       FileWriter file = new FileWriter("output.txt");
       for (int i = 0; i < field.getHeight(); i++) {

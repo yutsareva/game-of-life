@@ -1,9 +1,13 @@
 package ru.hse.java.commands;
 
 import com.beust.jcommander.Parameters;
+import java.util.concurrent.TimeUnit;
 import ru.hse.java.CLI;
 import ru.hse.java.ConsoleDisplay;
+import ru.hse.java.Display;
 import ru.hse.java.Runner;
+import ru.hse.java.automation.CellularAutomaton;
+import ru.hse.java.automation.StandardCellularAutomaton;
 import ru.hse.java.reader.FilesReader;
 import ru.hse.java.settings.Settings;
 
@@ -16,11 +20,13 @@ public class ShowStartCommand implements Command {
   @Override
   public void run() {
     FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE);
-    Settings settings = reader.readSettings();
-    settings.setIterationCount(1);
-    Runner runner = new Runner(settings, new ConsoleDisplay());
     try {
-      runner.run();
+      Settings settings = reader.readSettings();
+      settings.setIterationCount(1);
+      Display display = new ConsoleDisplay();
+      CellularAutomaton automation = new StandardCellularAutomaton(settings);
+      display.display(automation.getNextIteration(), false);
+      TimeUnit.MILLISECONDS.sleep(settings.getIterationTimeInterval().toMillis());
     } catch (InterruptedException e) {
       e.printStackTrace();
     }

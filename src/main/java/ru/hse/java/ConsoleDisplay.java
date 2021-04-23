@@ -10,8 +10,10 @@ public class ConsoleDisplay implements Display {
   }
 
   @Override
-  public void display(Field field) {
-    clearScreen();
+  public void display(Field field, boolean clear) {
+    if (clear) {
+      clearScreen();
+    }
     for (int i = 0; i < field.getHeight(); i++) {
       for (int j = 0; j < field.getWidth(); j++) {
         if (field.isAlive(i, j)) {

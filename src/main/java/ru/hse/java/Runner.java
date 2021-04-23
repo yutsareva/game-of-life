@@ -21,7 +21,7 @@ public class Runner {
     CellularAutomaton automation = new StandardCellularAutomaton(settings);
     while (true) {
       for (int i = 0; i < settings.getIterationCount() || settings.getIterationCount() < 0; i++) {
-        display.display(automation.getNextIteration());
+        display.display(automation.getNextIteration(), true);
         TimeUnit.MILLISECONDS.sleep(settings.getIterationTimeInterval().toMillis());
       }
       Scanner scanner = new Scanner(System.in);
