@@ -53,12 +53,12 @@ public class StandardCellularAutomaton extends CellularAutomaton {
       for (int j = 0; j < field.getWidth(); j++) {
         var aliveNeighbourCount = field.getAliveNeighbourCount(i, j);
 
-        if (automationRules.getAliveNeighborsToRevive().contains(aliveNeighbourCount)) {
+        if (field.isAlive(i, j) && automationRules.getAliveNeighborsToDie()
+            .contains(aliveNeighbourCount)) {
           cellsToDie.add(new ImmutablePair<Integer, Integer>(i, j));
         }
 
-        if (!field.isAlive(i, j) && automationRules.getAliveNeighborsToDie()
-            .contains(aliveNeighbourCount)) {
+        if (automationRules.getAliveNeighborsToRevive().contains(aliveNeighbourCount)) {
           cellsToRevive.add(new ImmutablePair<Integer, Integer>(i, j));
         }
       }

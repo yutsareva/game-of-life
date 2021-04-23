@@ -74,7 +74,7 @@ public class SettingsParser {
       throw new InvalidSettings("Invalid automation rules.");
     }
 
-    return new AutomationRules(parsedAliveNeighborsToDie, parsedAliveNeighborsToRevive);
+    return new AutomationRules(parsedAliveNeighborsToRevive, parsedAliveNeighborsToDie);
   }
 
   static private InitialConfiguration parseInitialConfiguration(JSONObject initialConfiguration) {

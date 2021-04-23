@@ -24,21 +24,22 @@ public class Runner {
         display.display(automation.getNextIteration());
         TimeUnit.MILLISECONDS.sleep(settings.getIterationTimeInterval().toMillis());
       }
-      Scanner scanner = new Scanner(System.in);
-      while (true) {
-        System.out.println(
-            "Do you want to continue(C), start from begin(S) or finish(F)? C/S/F (default=[F])");
-        String input_from_user = scanner.next();
-        System.out.println();
-        if (input_from_user.equalsIgnoreCase("S")) {
-          automation = new StandardCellularAutomaton(settings);
-          break;
-        } else if (input_from_user.equalsIgnoreCase("C")) {
-          break;
-        } else if (input_from_user.equalsIgnoreCase("F")) {
-          return;
-        }
-      }
+      return;
+//      Scanner scanner = new Scanner(System.in);
+//      while (true) {
+//        System.out.println(
+//            "Do you want to continue(C), start from begin(S) or finish(F)? C/S/F (default=[F])");
+//        String input_from_user = scanner.next();
+//        System.out.println();
+//        if (input_from_user.equalsIgnoreCase("S")) {
+//          automation = new StandardCellularAutomaton(settings);
+//          break;
+//        } else if (input_from_user.equalsIgnoreCase("C")) {
+//          break;
+//        } else if (input_from_user.equalsIgnoreCase("F")) {
+//          return;
+//        }
+//      }
     }
   }
 }
