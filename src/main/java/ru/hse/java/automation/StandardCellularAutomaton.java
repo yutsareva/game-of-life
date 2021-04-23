@@ -39,7 +39,9 @@ public class StandardCellularAutomaton extends CellularAutomaton {
     if (gameFinished()) {
       throw new RuntimeException("Game finished. Can not build new iteration.");
     }
-    iterationsLeft--;
+    if (iterationsLeft > 0) {
+      iterationsLeft--;
+    }
 
     if (!gameStarted) {
       gameStarted = true;
@@ -72,6 +74,10 @@ public class StandardCellularAutomaton extends CellularAutomaton {
     }
 
     return field;
+  }
+
+  public void setIterationsLeft(int new_iterations_left) {
+    iterationsLeft = new_iterations_left;
   }
 
   @Override
