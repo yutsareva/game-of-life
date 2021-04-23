@@ -73,7 +73,7 @@ public class SetParamsCommand implements Command {
     if (iters_count < -1) {
       System.out.println("'--iters_count' must be positive or -1 (-1 for infinite game)");
       return false;
-    } else if (iters_count > 0) {
+    } else if (iters_count == -1 || iters_count > 0) {
       settings.setIterationCount(iters_count);
     }
     return true;
