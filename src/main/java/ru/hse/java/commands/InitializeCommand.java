@@ -2,6 +2,12 @@ package ru.hse.java.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import ru.hse.java.CLI;
+import ru.hse.java.ConsoleDisplay;
+import ru.hse.java.Runner;
+import ru.hse.java.reader.FilesReader;
+import ru.hse.java.settings.Settings;
+import ru.hse.java.writer.FilesWriter;
 
 @Parameters(
     commandNames = { "initialize" },
@@ -11,13 +17,17 @@ public class InitializeCommand implements Command {
 
   @Parameter(
       names = "--file",
-      description = "Input file."
+      description = "Input file.",
+      required = true
   )
   private String file;
 
   @Override
   public void run() {
-    System.out.println("InitializeCommand");
+    FilesReader reader = new FilesReader(file);
+    FilesWriter writer = new FilesWriter(CLI.CURRENT_CONFIG_FILE);
+    Settings settings = reader.readSettings();
+    writer.writeSettings(settings);
   }
 
   @Override
