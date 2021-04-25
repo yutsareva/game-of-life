@@ -4,18 +4,18 @@
 Отправная точка взаимодействия пользователя с программой. Использует внешние библиотеки для распарсивания поступившей команды от пользователя и передачи управления соответствующим классам.
 
 Поддерживает комманды:
-1. `run --speed 1(ms) --size [10,10] --iters_count 100 --snapshot true --snapshot_step 10 --snapshot_file “output.txt” --color "white"` Запуск симуляции с текущими параметрами и входными данными.
-2. `initialize --file “input.txt”` Проинициализировать изначальное состояние поля координатами живых клеток из файла. Все предыдущие координаты клеток удаляются.
-3. `set_rules --file “input.txt”` Изменить правила.
-4. `set_params --speed 1 --size [10,10] --iters_count 100 --color "white"` Зафиксировать значения параметров для всех будущих итераций.
+1. `run --speed 400 --size 10 10 --iters_count 100 --snapshot --snapshot_step 10 --snapshot_folder “path/to/folder/” --color "white"` Запуск симуляции с текущими параметрами и входными данными.
+2. `initialize --file “input.json”` Проинициализировать изначальное состояние поля координатами живых клеток из файла. Все предыдущие координаты клеток удаляются.
+3. `set_rules --revive 1,2,3 --die 4,5` Изменить правила.
+4. `set_params --speed 1 --size 10 10 --iters_count 100 --color "white"` Зафиксировать значения параметров для всех будущих итераций.
 5. `get_params` Вывести на экран текущие значения параметров.
-6. `add_dot --place [2, 5]` Добавить живую клетку с данными координатами.
-7. `remove_dot --place [2, 5]` Удалить живую клетку с данными координатами.
-8. `add_figure --type “type” --place [6, 12]` Добавить фигуру.
+6. `add_dot --place 2 5` Добавить живую клетку с данными координатами.
+7. `remove_dot --place 2 5` Удалить живую клетку с данными координатами.
+8. `add_figure --type blinker --place 6 12` Добавить фигуру.
 9. `show_start` Показать стартовое состояние автомата.
 10. `reset` Восстанавливает дефолтные значения параметров запуска, правил, очищает начальную конфигурацию.
-11. `show_board --file "input.txt"` Выводит на экран доску из файла.
-12. `stop` Останавливает симуляцию.
+11. `show_board --file "input.json"` Выводит на экран доску из файла.
+12. `clear` Очищает доску.
  
 ---
 
@@ -29,22 +29,22 @@
 Запускает симуляцию. Предполагается, что на момент запуска этой команды, начальная конфигурация была проверена другими командами и валидна на данный момент. `RunCommand` инициализирует начальное состояние автомата и запускает класс `Runner`.
 
 #### class InitializeCommand implements Command
-Инициализирует изначальное состояние автомата координатами из файла. Проверяет корректность формата и данных, и копирует координаты в `initial_configuration.txt`.
+Инициализирует изначальное состояние автомата координатами и параметрами из файла.
 
 #### class SetRulesCommand implements Command
-Меняет правила на данные в файле. Проверяет корректность правил, и копирует их в `rules.txt` (есть еще неизменяемый файл `default_rules.txt` с начальными правилами GoL).
+Меняет правила на новые. Записывает новые правила в `current_configuration.json`.
 
 #### class SetParamsCommand implements Command
-Перманентно меняет значение параметров запуска. Записывает их в `parameters.txt`.
+Перманентно меняет значение параметров запуска. Записывает их в `current_configuration.json`.
 
 #### class GetParamsCommand implements Command
-Выводит на экран значения параметров. Читает из `parameters.txt`.
+Выводит на экран значения параметров. Читает из `current_configuration.json`.
 
 #### class AddDotCommand implements Command
-Добавляет живую клетку. Проверяет, что такой клетки еще нет и добавляет ее в `initial_configuration.txt`. 
+Добавляет живую клетку. Проверяет, что такой клетки еще нет и добавляет ее в `current_configuration.json`. 
 
 #### class RemoveDotCommand implements Command
-Удаляет живую клетку. Проверяет, есть ли такая живая клетка и удаляет ее из `initial_configuration.txt`.
+Удаляет живую клетку. Проверяет, есть ли такая живая клетка и удаляет ее из `current_configuration.json`.
 
 #### class AddFigureCommand implements Command
 Добавляет фигуру с координатами верхней левой клетки. Аналогично `AddDotCommand`, но с поправками на фигуру.
@@ -53,13 +53,13 @@
 Выводит на экран стартовую конфигурацию живых клеток.
 
 #### class ResetCommand implements Command
-Возвращает дефолтные значения симуляции. Копирует `default_rules.txt` в `rules.txt`, копирует `default_params.txt` в `params.txt`, очищает файл `initial_configuration.txt`.
+Возвращает дефолтные значения симуляции. Копирует `default_configuration.json` в `current_configuration.json`.
 
 #### class ShowBoardCommand implements Command
-Получает на вход доску и выводит ее в консоль.
+Получает на вход доску из файла и выводит ее в консоль.
 
-#### class StopCommand implements Command
-Останавливает игру.
+#### class ClearCommand implements Command
+Очищает доску.
 
 ---
 
