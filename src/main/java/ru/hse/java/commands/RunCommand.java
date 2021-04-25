@@ -49,10 +49,10 @@ public class RunCommand implements Command {
   private int snapshot_step;
 
   @Parameter(
-      names = "--snapshot_file",
-      description = "File to save snapshots."
+      names = "--snapshot_folder",
+      description = "Folder to save snapshots."
   )
-  private double snapshot_file;
+  private String snapshot_folder;
 
   @Parameter(
       names = "--color",
@@ -67,7 +67,7 @@ public class RunCommand implements Command {
     FilesReader reader = new FilesReader(CLI.CURRENT_CONFIG_FILE);
     settings = reader.readSettings();
     if (check_flags()) {
-      Runner runner = new Runner(settings, new ConsoleDisplay());
+      Runner runner = new Runner(settings, new ConsoleDisplay(), snapshot_step, snapshot_folder);
       try {
         runner.run();
       } catch (InterruptedException e) {
@@ -99,6 +99,13 @@ public class RunCommand implements Command {
       return false;
     } else if (iters_count == -1 || iters_count > 0) {
       settings.setIterationCount(iters_count);
+    }
+
+    if ((snapshot | (snapshot_folder != null) | (snapshot_step > 0)) &&
+        !(snapshot & (snapshot_folder != null) & (snapshot_step > 0))) {
+      System.out.println("Flags --snapshot, --snapshot_folder and --snapshot_step must "
+          + "be provided at the same time. Also --snapshot_step must be positive.");
+      return false;
     }
     return true;
   }

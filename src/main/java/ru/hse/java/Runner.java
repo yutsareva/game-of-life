@@ -11,10 +11,14 @@ public class Runner {
 
   private Settings settings;
   private final Display display;
+  private int snapshot_step;
+  private String snapshot_folder;
 
-  public Runner(Settings settings, Display display) {
+  public Runner(Settings settings, Display display, int snapshot_step, String snapshot_folder) {
     this.settings = settings;
     this.display = display;
+    this.snapshot_step = snapshot_step;
+    this.snapshot_folder = snapshot_folder;
   }
 
   public void run() throws InterruptedException {
