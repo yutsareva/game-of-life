@@ -13,7 +13,6 @@ import ru.hse.java.commands.SetParamsCommand;
 import ru.hse.java.commands.SetRulesCommand;
 import ru.hse.java.commands.ShowBoardCommand;
 import ru.hse.java.commands.ShowStartCommand;
-import ru.hse.java.commands.StopCommand;
 
 public class CLI {
 
@@ -32,7 +31,6 @@ public class CLI {
     ShowStartCommand showStartCommand = new ShowStartCommand();
     ResetCommand resetCommand = new ResetCommand();
     ShowBoardCommand showBoardCommand = new ShowBoardCommand();
-    StopCommand stopCommand = new StopCommand();
     HelpCommand helpCommand = new HelpCommand();
 
     JCommander jc = JCommander.newBuilder()
@@ -47,7 +45,6 @@ public class CLI {
         .addCommand(showStartCommand)
         .addCommand(resetCommand)
         .addCommand(showBoardCommand)
-        .addCommand(stopCommand)
         .addCommand(helpCommand)
         .build();
     jc.parse(args);
@@ -64,7 +61,6 @@ public class CLI {
       case "show_start" -> showStartCommand.run();
       case "reset" -> resetCommand.run();
       case "show_board" -> showBoardCommand.run();
-      case "stop" -> stopCommand.run();
       case "help" -> jc.usage();
       default -> System.err.println("Invalid command: " + parsedCmdStr);
     }
