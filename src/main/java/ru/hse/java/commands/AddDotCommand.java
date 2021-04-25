@@ -52,7 +52,7 @@ public class AddDotCommand implements Command {
 
   @Override
   public boolean check_flags() {
-    if (coordinates.get(0) < 0 || coordinates.get(1) >= settings.getHeight() ||
+    if (coordinates.get(0) < 0 || coordinates.get(0) >= settings.getHeight() ||
         coordinates.get(1) < 0 || coordinates.get(1) >= settings.getWidth()) {
       System.out.println("Coordinates are out of board limits. Current board size is: "
           + settings.getHeight() + " " + settings.getWidth());
