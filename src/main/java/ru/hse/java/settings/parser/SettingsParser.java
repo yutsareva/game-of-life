@@ -35,6 +35,9 @@ public class SettingsParser {
       Duration duration = Duration
           .ofMillis(((Long) settings.get("iteration_duration_ms")).intValue());
       int iterationsCount = ((Long) settings.get("iteration_count")).intValue();
+      if (iterationsCount <= 0) {
+        throw new InvalidSettings("Invalid automation rules: iteration count must be a positive integer.");
+      }
 
       return new SettingsFromFile(
           parseFieldSettings(fieldSettings),

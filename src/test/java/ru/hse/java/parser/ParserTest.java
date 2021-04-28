@@ -13,9 +13,14 @@ public class ParserTest {
   }
 
   @Test(expected = InvalidSettings.class)
-  public void invalid_iteration_invalid() {
+  public void invalid_iteration_count() {
     SettingsParser
-        .parse("src/main/resources/test_data/test_invalid_iteration_invalid.json");
+        .parse("src/main/resources/test_data/test_invalid_iteration_count.json");
   }
 
+  @Test(expected = InvalidSettings.class)
+  public void file_does_not_exist() {
+    SettingsParser
+        .parse("src/main/resources/test_data/test_non_existent_path.json");
+  }
 }
