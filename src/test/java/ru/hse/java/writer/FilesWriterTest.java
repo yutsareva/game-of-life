@@ -14,12 +14,11 @@ import ru.hse.java.settings.parser.SettingsParser;
 import static org.junit.Assert.*;
 
 public class FilesWriterTest {
-    public final String path = "src/main/resources/examples/test_configuration.json";
+    public final String path = "src/main/resources/test_data/test_configuration.json";
 
     @Test
     public void writeHeightTest() {
         Settings previous_settings = SettingsParser.parse(path);
-        assert previous_settings != null;
         Integer previous_height = previous_settings.getHeight();
 
         Integer new_height = 33;
@@ -27,12 +26,10 @@ public class FilesWriterTest {
         curWriter.writeHeight(new_height);
 
         Settings current_settings = SettingsParser.parse(path);
-        assert current_settings != null;
         assertEquals(new_height, current_settings.getHeight());
 
         curWriter.writeHeight(previous_height);
         Settings new_settings = SettingsParser.parse(path);
-        assert new_settings != null;
         assertSame(previous_height, new_settings.getHeight());
     }
 
@@ -51,8 +48,8 @@ public class FilesWriterTest {
     @Test
     public void writeAutomationRules() {
         FilesWriter curWriter = new FilesWriter(path);
-        Set<Integer> alive_neighbors_to_revive = new HashSet<Integer>(Arrays.asList(2, 8));
-        Set<Integer> alive_neighbors_to_die = new HashSet<Integer>(Arrays.asList(0, 4, 5, 6, 7));
+        Set<Integer> alive_neighbors_to_revive = new HashSet<>(Arrays.asList(2, 8));
+        Set<Integer> alive_neighbors_to_die = new HashSet<>(Arrays.asList(0, 4, 5, 6, 7));
         AutomationRules rules = new AutomationRules(alive_neighbors_to_revive, alive_neighbors_to_die);
         curWriter.writeAutomationRules(rules);
     }
@@ -61,17 +58,17 @@ public class FilesWriterTest {
     public void writeInitialAliveCells() {
         FilesWriter curWriter = new FilesWriter(path);
         List<Pair<Integer, Integer>> initialAliveCells = new ArrayList<>();
-        initialAliveCells.add(new ImmutablePair<Integer, Integer>(1, 1));
-        initialAliveCells.add(new ImmutablePair<Integer, Integer>(2, 2));
-        initialAliveCells.add(new ImmutablePair<Integer, Integer>(3, 3));
-        initialAliveCells.add(new ImmutablePair<Integer, Integer>(4, 4));
+        initialAliveCells.add(new ImmutablePair<>(1, 1));
+        initialAliveCells.add(new ImmutablePair<>(2, 2));
+        initialAliveCells.add(new ImmutablePair<>(3, 3));
+        initialAliveCells.add(new ImmutablePair<>(4, 4));
         curWriter.writeInitialAliveCells(initialAliveCells);
     }
 
     @Test
     public void writeAliveCell() {
         FilesWriter curWriter = new FilesWriter(path);
-        Pair<Integer, Integer> aliveCell = new ImmutablePair<Integer, Integer>(1, 1);
+        Pair<Integer, Integer> aliveCell = new ImmutablePair<>(1, 1);
         curWriter.writeAliveCell(aliveCell);
     }
 }

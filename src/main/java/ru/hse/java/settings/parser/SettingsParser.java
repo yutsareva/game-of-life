@@ -43,9 +43,7 @@ public class SettingsParser {
           iterationsCount,
           duration);
     } catch (IOException | ParseException e) {
-      System.out.println("in reader catch");
-      e.printStackTrace();
-      return null;
+      throw new InvalidSettings("Invalid automation rules: " + e.getMessage());
     }
   }
 
@@ -71,7 +69,7 @@ public class SettingsParser {
     Set<Integer> intersection = new HashSet<Integer>(parsedAliveNeighborsToDie);
     intersection.retainAll(parsedAliveNeighborsToRevive);
     if (!intersection.isEmpty()) {
-      throw new InvalidSettings("Invalid automation rules.");
+      throw new InvalidSettings("Invalid automation rules: duplicate cell count to die and revive.");
     }
 
     return new AutomationRules(parsedAliveNeighborsToRevive, parsedAliveNeighborsToDie);

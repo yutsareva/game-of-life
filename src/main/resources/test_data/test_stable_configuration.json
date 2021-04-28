@@ -1,0 +1,21 @@
+{
+  "settings": {
+    "iteration_count": 6,
+    "field": {
+      "width": 3,
+      "height": 3
+    },
+    "iteration_duration_ms": 250,
+    "automation_rules": {
+      "alive_neighbors_to_die": [0, 1, 4],
+      "alive_neighbors_to_revive": [2, 8]
+    },
+    "initial_configuration": {
+      "alive_points": [
+        {"x": 0, "y": 0},
+        {"x": 1, "y": 1},
+        {"x": 2, "y": 2}
+      ]
+    }
+  }
+}
