@@ -7,7 +7,7 @@ import java.io.FileWriter;
 public class FileDisplay implements Display {
 
   @Override
-  public void display(Field field, boolean clear) {
+  public void display(Field field, boolean clear, String alive_cell_color, String dead_cell_color)  {
     try {
       FileWriter file = new FileWriter("output.txt");
       for (int i = 0; i < field.getHeight(); i++) {
@@ -17,8 +17,8 @@ public class FileDisplay implements Display {
           } else {
             file.write(".");
           }
-          file.write("\n");
         }
+        file.write("\n");
       }
     } catch (IOException e) {
       System.out.println("File error.");
