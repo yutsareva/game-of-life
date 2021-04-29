@@ -12,7 +12,7 @@ public class StandardCellularAutomaton extends CellularAutomaton {
   private final Field field;
   private int iterationsLeft;
   private boolean gameStarted;
-  private AutomationRules automationRules;
+  private final AutomationRules automationRules;
 
   public StandardCellularAutomaton(Settings settings) {
     field = new Field(settings.getHeight(), settings.getWidth());
@@ -57,11 +57,11 @@ public class StandardCellularAutomaton extends CellularAutomaton {
 
         if (field.isAlive(i, j) && automationRules.getAliveNeighborsToDie()
             .contains(aliveNeighbourCount)) {
-          cellsToDie.add(new ImmutablePair<Integer, Integer>(i, j));
+          cellsToDie.add(new ImmutablePair<>(i, j));
         }
 
         if (automationRules.getAliveNeighborsToRevive().contains(aliveNeighbourCount)) {
-          cellsToRevive.add(new ImmutablePair<Integer, Integer>(i, j));
+          cellsToRevive.add(new ImmutablePair<>(i, j));
         }
       }
     }

@@ -23,7 +23,7 @@ import ru.hse.java.settings.SettingsFromFile;
 
 public class SettingsParser {
 
-  static public Settings parse(String settingsFileName) {
+  static public Settings parse(String settingsFileName) throws InvalidSettings {
     JSONParser parser = new JSONParser();
     try {
       JSONObject settings = (JSONObject) ((JSONObject) parser
@@ -38,11 +38,12 @@ public class SettingsParser {
       if (iterationsCount <= 0) {
         throw new InvalidSettings("Invalid automation rules: iteration count must be a positive integer.");
       }
+      FieldSettings parsedFieldSettings = parseFieldSettings(fieldSettings);
 
       return new SettingsFromFile(
-          parseFieldSettings(fieldSettings),
+          parsedFieldSettings,
           parseAutomationRules(automationRules),
-          parseInitialConfiguration(initialConfiguration),
+          parseInitialConfiguration(initialConfiguration, parsedFieldSettings.getHeight(), parsedFieldSettings.getWidth()),
           iterationsCount,
           duration);
     } catch (IOException | ParseException e) {
@@ -69,7 +70,7 @@ public class SettingsParser {
       parsedAliveNeighborsToRevive.add(((Long) elem).intValue());
     }
 
-    Set<Integer> intersection = new HashSet<Integer>(parsedAliveNeighborsToDie);
+    Set<Integer> intersection = new HashSet<>(parsedAliveNeighborsToDie);
     intersection.retainAll(parsedAliveNeighborsToRevive);
     if (!intersection.isEmpty()) {
       throw new InvalidSettings("Invalid automation rules: duplicate cell count to die and revive.");
@@ -78,14 +79,18 @@ public class SettingsParser {
     return new AutomationRules(parsedAliveNeighborsToRevive, parsedAliveNeighborsToDie);
   }
 
-  static private InitialConfiguration parseInitialConfiguration(JSONObject initialConfiguration) {
+  static private InitialConfiguration parseInitialConfiguration(JSONObject initialConfiguration, int height, int width) {
     List<Pair<Integer, Integer>> initialAliveCells = new ArrayList<>();
     JSONArray points = (JSONArray) initialConfiguration.get("alive_points");
     for (Object o : points) {
       JSONObject point = (JSONObject) o;
 
-      Integer x = ((Long) point.get("x")).intValue();
-      Integer y = ((Long) point.get("y")).intValue();
+      int x = ((Long) point.get("x")).intValue();
+      int y = ((Long) point.get("y")).intValue();
+
+      if (x < 0 || x >= height || y < 0 || y >= width) {
+        throw new InvalidSettings("Invalid automation rules: some initial cells are out of the field: (" + x + ", " + y + ")");
+      }
 
       Pair<Integer, Integer> curPoint = new ImmutablePair<>(x, y);
       initialAliveCells.add(curPoint);

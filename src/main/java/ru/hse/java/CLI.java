@@ -14,6 +14,7 @@ import ru.hse.java.commands.SetParamsCommand;
 import ru.hse.java.commands.SetRulesCommand;
 import ru.hse.java.commands.ShowBoardCommand;
 import ru.hse.java.commands.ShowStartCommand;
+import ru.hse.java.settings.parser.InvalidSettings;
 
 public class CLI {
 
@@ -52,21 +53,25 @@ public class CLI {
         .build();
     jc.parse(args);
     String parsedCmdStr = jc.getParsedCommand();
-    switch (parsedCmdStr) {
-      case "run" -> runCommand.run();
-      case "initialize" -> initializeCommandCmd.run();
-      case "set_rules" -> setRulesCommand.run();
-      case "set_params" -> setParamsCommand.run();
-      case "get_params" -> getParamsCommand.run();
-      case "add_dot" -> addDotCommand.run();
-      case "remove_dot" -> removeDotCommand.run();
-      case "add_figure" -> addFigureCommand.run();
-      case "show_start" -> showStartCommand.run();
-      case "reset" -> resetCommand.run();
-      case "show_board" -> showBoardCommand.run();
-      case "clear" -> clearCommand.run();
-      case "help" -> jc.usage();
-      default -> System.err.println("Invalid command: " + parsedCmdStr);
+    try {
+      switch (parsedCmdStr) {
+        case "run" -> runCommand.run();
+        case "initialize" -> initializeCommandCmd.run();
+        case "set_rules" -> setRulesCommand.run();
+        case "set_params" -> setParamsCommand.run();
+        case "get_params" -> getParamsCommand.run();
+        case "add_dot" -> addDotCommand.run();
+        case "remove_dot" -> removeDotCommand.run();
+        case "add_figure" -> addFigureCommand.run();
+        case "show_start" -> showStartCommand.run();
+        case "reset" -> resetCommand.run();
+        case "show_board" -> showBoardCommand.run();
+        case "clear" -> clearCommand.run();
+        case "help" -> jc.usage();
+        default -> System.err.println("Invalid command: " + parsedCmdStr);
+      }
+    } catch (InvalidSettings error) {
+      System.out.println(error.getMessage());
     }
   }
 }

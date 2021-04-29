@@ -5,7 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class InitialConfiguration {
 
-  private List<Pair<Integer, Integer>> initialAliveCells;
+  private final List<Pair<Integer, Integer>> initialAliveCells;
 
   public InitialConfiguration(List<Pair<Integer, Integer>> initialAliveCells) {
     this.initialAliveCells = initialAliveCells;

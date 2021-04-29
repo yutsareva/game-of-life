@@ -23,4 +23,10 @@ public class ParserTest {
     SettingsParser
         .parse("src/main/resources/test_data/test_non_existent_path.json");
   }
+
+  @Test(expected = InvalidSettings.class)
+  public void invalid_initial_alive_cells() {
+    SettingsParser
+        .parse("src/main/resources/test_data/test_invalid_initial_alive_cells.json");
+  }
 }

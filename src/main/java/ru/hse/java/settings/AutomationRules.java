@@ -4,8 +4,8 @@ import java.util.Set;
 
 public class AutomationRules {
 
-  private Set<Integer> aliveNeighborsToRevive;
-  private Set<Integer> aliveNeighborsToDie;
+  private final Set<Integer> aliveNeighborsToRevive;
+  private final Set<Integer> aliveNeighborsToDie;
   // maxIterationCountToLive - ?
 
   public AutomationRules(Set<Integer> aliveNeighborsToRevive, Set<Integer> aliveNeighborsToDie) {
