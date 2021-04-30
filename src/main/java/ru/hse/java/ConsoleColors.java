@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConsoleColors {
-    private final Map<String, String> colors = new HashMap<String, String>();
+    private final Map<String, String> colors = new HashMap<>();
 
     ConsoleColors() {
         colors.put("black", "\033[0;30m");   // BLACK

@@ -12,10 +12,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Runner {
 
-  private Settings settings;
+  private final Settings settings;
   private final Display display;
-  private int snapshot_step;
-  private String snapshot_file;
+  private final int snapshot_step;
+  private final String snapshot_file;
   private final Display display_for_snapshots;
 
   public Runner(Settings settings, Display display, int snapshot_step, String snapshot_file) {

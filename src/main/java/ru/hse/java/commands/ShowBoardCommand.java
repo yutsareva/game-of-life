@@ -5,7 +5,6 @@ import com.beust.jcommander.Parameters;
 import java.util.concurrent.TimeUnit;
 import ru.hse.java.ConsoleDisplay;
 import ru.hse.java.Display;
-import ru.hse.java.Runner;
 import ru.hse.java.automation.CellularAutomaton;
 import ru.hse.java.automation.StandardCellularAutomaton;
 import ru.hse.java.reader.FilesReader;

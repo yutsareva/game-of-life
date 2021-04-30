@@ -13,7 +13,6 @@ public class CellularAutomationTest {
   @Test
   public void first() {
     Settings settings = SettingsParser.parse("src/main/resources/test_data/simple_configuration.json");
-    assert settings != null;
     CellularAutomaton automation = new StandardCellularAutomaton(settings);
     assertFalse(automation.gameFinished());
 
@@ -40,7 +39,6 @@ public class CellularAutomationTest {
   @Test
   public void second() {
     Settings settings = SettingsParser.parse("src/main/resources/test_data/test_stable_configuration.json");
-    assert settings != null;
     CellularAutomaton automation = new StandardCellularAutomaton(settings);
     assertFalse(automation.gameFinished());
 
