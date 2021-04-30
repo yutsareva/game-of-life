@@ -3,13 +3,19 @@ package ru.hse.java;
 import ru.hse.java.automation.Field;
 import java.io.IOException;
 import java.io.FileWriter;
+import java.nio.file.FileStore;
 
 public class FileDisplay implements Display {
+  private final String displayFileName;
+
+  FileDisplay(String displayFileName) {
+    this.displayFileName = displayFileName;
+  }
 
   @Override
-  public void display(Field field, boolean clear, String alive_cell_color, String dead_cell_color)  {
+  public void display(Field field, boolean clear)  {
     try {
-      FileWriter file = new FileWriter("output.txt");
+      FileWriter file = new FileWriter(displayFileName);
       for (int i = 0; i < field.getHeight(); i++) {
         for (int j = 0; j < field.getWidth(); j++) {
           if (field.isAlive(i, j)) {
