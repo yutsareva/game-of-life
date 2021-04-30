@@ -10,6 +10,10 @@ public abstract class Settings {
 
   public abstract Integer getWidth();
 
+  public abstract String getColorAlive();
+
+  public abstract String getColorDead();
+
   public abstract Duration getIterationTimeInterval();
 
   public abstract List<Pair<Integer, Integer>> getInitialAliveCells();
@@ -25,5 +29,9 @@ public abstract class Settings {
   public abstract void setHeight(Integer height);
 
   public abstract void setWidth(Integer width);
+
+  public abstract void setColorAlive(String color);
+
+  public abstract void setColorDead(String color);
 
 }

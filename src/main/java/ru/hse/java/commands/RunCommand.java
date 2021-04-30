@@ -55,10 +55,16 @@ public class RunCommand implements Command {
   private String snapshot_folder;
 
   @Parameter(
-      names = "--color",
+      names = "--color_alive",
       description = "Color of alive cells."
   )
-  private double color;
+  private String color_alive;
+
+  @Parameter(
+      names = "--color_dead",
+      description = "Color of dead cells."
+  )
+  private String color_dead;
 
   private Settings settings;
 
@@ -106,6 +112,13 @@ public class RunCommand implements Command {
       System.out.println("Flags --snapshot, --snapshot_folder and --snapshot_step must "
           + "be provided at the same time. Also --snapshot_step must be positive.");
       return false;
+    }
+
+    if (color_alive != null) {
+      settings.setColorAlive(color_alive);
+    }
+    if (color_dead != null) {
+      settings.setColorDead(color_dead);
     }
     return true;
   }

@@ -39,6 +39,16 @@ public class SettingsFromFile extends Settings {
   }
 
   @Override
+  public String getColorAlive() {
+    return fieldSettings.getColorAlive();
+  }
+
+  @Override
+  public String getColorDead() {
+    return fieldSettings.getColorDead();
+  }
+
+  @Override
   public Duration getIterationTimeInterval() {
     return iterationTimeInterval;
   }
@@ -76,5 +86,15 @@ public class SettingsFromFile extends Settings {
   @Override
   public void setHeight(Integer height) {
     fieldSettings.setHeight(height);
+  }
+
+  @Override
+  public void setColorAlive(String color) {
+    fieldSettings.setColorAlive(color);
+  }
+
+  @Override
+  public void setColorDead(String color) {
+    fieldSettings.setColorDead(color);
   }
 }
