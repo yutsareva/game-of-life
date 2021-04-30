@@ -68,7 +68,8 @@ public class FilesWriterTest {
     @Test
     public void writeAliveCell() {
         FilesWriter curWriter = new FilesWriter(path);
-        Pair<Integer, Integer> aliveCell = new ImmutablePair<>(1, 1);
+        Pair<Integer, Integer> aliveCell = new ImmutablePair<>(3, 4);
+        curWriter.writeAliveCell(aliveCell);
         curWriter.writeAliveCell(aliveCell);
     }
 }
