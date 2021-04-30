@@ -27,12 +27,14 @@ public class Runner {
   }
 
   public void run() throws InterruptedException {
-    try {
-      FileWriter wr = new FileWriter(snapshot_file);
-      wr.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-      return;
+    if (snapshot_file != null) {
+      try {
+        FileWriter wr = new FileWriter(snapshot_file);
+        wr.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+        return;
+      }
     }
     CellularAutomaton automation = new StandardCellularAutomaton(settings);
     int global_iteration = 0;
