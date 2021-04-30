@@ -9,7 +9,7 @@ public class ConsoleColors {
     ConsoleColors() {
         colors.put("black", "\033[0;30m");   // BLACK
         colors.put("red", "\033[0;31m");     // RED
-        colors.put("greeb", "\033[0;32m");   // GREEN
+        colors.put("green", "\033[0;32m");   // GREEN
         colors.put("yellow", "\033[0;33m");  // YELLOW
         colors.put("blue", "\033[0;34m");    // BLUE
         colors.put("purple", "\033[0;35m");  // PURPLE

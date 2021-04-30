@@ -1,19 +1,22 @@
 package ru.hse.java;
 
+import org.checkerframework.framework.qual.Unused;
 import ru.hse.java.automation.Field;
 
 public class ConsoleDisplay implements Display {
-  private final String alive_cell_color;
-  private final String dead_cell_color;
+  private String alive_cell_color = "blue";
+  private String dead_cell_color = "white";
 
   public ConsoleDisplay() {
-    this.alive_cell_color = "blue";
-    this.dead_cell_color = "white";
   }
 
   public ConsoleDisplay(String alive_cell_color, String dead_cell_color) {
-    this.alive_cell_color = alive_cell_color;
-    this.dead_cell_color = dead_cell_color;
+    if (alive_cell_color != null) {
+      this.alive_cell_color = alive_cell_color;
+    }
+    if (dead_cell_color != null) {
+      this.dead_cell_color = dead_cell_color;
+    }
   }
 
   public static void clearScreen() {
@@ -22,8 +25,8 @@ public class ConsoleDisplay implements Display {
   }
 
   @Override
-  public void display(Field field, boolean clear)  {
-    if (clear) {
+  public void display(Field field, boolean clear, int iteration)  {
+    if (clear && iteration < 100500) {
       clearScreen();
     }
     ConsoleColors colors = new ConsoleColors();

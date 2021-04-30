@@ -42,7 +42,7 @@ public class AddDotCommand implements Command {
         settings.setIterationCount(1);
         Display display = new ConsoleDisplay();
         CellularAutomaton automation = new StandardCellularAutomaton(settings);
-        display.display(automation.getNextIteration(), false);
+        display.display(automation.getNextIteration(), false, 0);
         TimeUnit.MILLISECONDS.sleep(settings.getIterationTimeInterval().toMillis());
       } catch (InterruptedException e) {
         e.printStackTrace();

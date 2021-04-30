@@ -4,6 +4,6 @@ import ru.hse.java.automation.Field;
 
 public interface Display {
 
-  default void display(Field field, boolean clear) {
+  default void display(Field field, boolean clear, int iteration) {
   }
 }
