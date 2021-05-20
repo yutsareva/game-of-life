@@ -27,6 +27,6 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run a one-line script
         run: |
-          mvn package
+          mvn -B package --file pom.xml
           mvn jib:build
           mvn jib:dockerBuild
