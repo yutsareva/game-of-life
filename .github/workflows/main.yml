@@ -29,6 +29,7 @@ jobs:
       - name: docker-life
         
       - name: Build with Maven
-        run: mvn package
-        run: mvn jib:build
-        run: mvn jib:dockerBuild
+        run: |
+            mvn package
+            mvn jib:build
+            mvn jib:dockerBuild
