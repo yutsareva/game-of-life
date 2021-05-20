@@ -123,6 +123,38 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Docker image -->
+      <plugin>
+    <groupId>com.google.cloud.tools</groupId>
+    <artifactId>jib-maven-plugin</artifactId>
+    <version>1.6.1</version>
+    <configuration>
+        <from>
+            <image>openjdk:11.0.4-jre-slim</image>
+        </from>
+        <to>
+            <image>domain.com/${project.artifactId}:latest</image>
+            <!-- optional: create a tag based on the git commit id (via the git-commit-id plugin): -->
+            <tags>
+                <tag>${git.commit.id}</tag>
+            </tags>
+        </to>
+        <container>
+            <jvmFlags>
+                <jvmFlag>-server</jvmFlag>
+            </jvmFlags>
+        </container>
+    </configuration>
+    <executions>
+        <execution>
+            <id>build-and-push-docker-image</id>
+            <phase>package</phase>
+            <goals>
+                <goal>build</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
     </plugins>
   </build>
 </project>
