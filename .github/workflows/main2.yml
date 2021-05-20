@@ -24,7 +24,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
-      # Runs a single command using the runners shell
+      - uses: actions/checkout@v1
       - name: Run a one-line script
         run: |
           mvn package
