@@ -142,7 +142,7 @@
             <paths>
               <path>
                 <from>src/main/resources</from>
-                <into>/app/src/main/resources</into>
+                <into>/src/main/resources</into>
               </path>
             </paths>
           </extraDirectories>
