@@ -138,6 +138,14 @@
               docker.io/dockertsareva/${project.artifactId}:latest
             </image>
           </to>
+          <extraDirectories>
+            <paths>
+              <path>
+                <from>src/main/resources</from>
+                <into>src/main/resources</into>
+              </path>
+            </paths>
+          </extraDirectories>
         </configuration>
       </plugin>
     </plugins>
