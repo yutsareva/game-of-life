@@ -32,5 +32,12 @@ $ java -jar target/game-of-life-1.0.jar run --iters_count 10
 ```
 
 
+### Run from docker
+```bash
+$ docker pull dockertsareva/game-of-life:latest
+$ docker run dockertsareva/game-of-life:latest run --color_alive blue --color_dead red --iters_count -1
+```
+
+
 
 ![hippo](https://media.giphy.com/media/tZOXaZeACq20egmSrc/giphy.gif)
